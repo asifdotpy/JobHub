@@ -7,6 +7,3 @@ from django.http import Http404
 def index(request):
     return render(request, 'landing/index.html')
 
-
-def jobs(request):
-    return HttpResponse("Apply for jobs tab")
