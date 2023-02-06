@@ -120,13 +120,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Setting up static_root
+# Setting up static_root.
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Setting up staticfiles directories
 STATICFILES_DIRS = [
     BASE_DIR / "landing/templates/landing",
-        ]
+    BASE_DIR / "jobs/templates/jobs",    
+    ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
