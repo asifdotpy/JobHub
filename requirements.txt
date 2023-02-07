@@ -1,0 +1,8 @@
+asgiref==3.6.0
+autopep8==2.0.1
+djangify==1.0.0
+Django==4.1.6
+pycodestyle==2.10.0
+python-dotenv==0.21.1
+sqlparse==0.4.3
+tomli==2.0.1
