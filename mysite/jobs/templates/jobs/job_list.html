@@ -53,7 +53,7 @@
             opportunities for growth, this is the perfect opportunity for those looking to take their skills to the next
             level. Apply now and join us in creating cutting-edge digital solutions!</h2>
           <div>
-            <a href="#about" class="btn-get-started scrollto">Apply Now</a>
+            <a href="#services" class="btn-get-started scrollto" id="apply-now-btn">Apply Now</a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img">
@@ -177,7 +177,14 @@
 
   <!-- Template Main JS File -->
   <script src=" {% static 'assets/js/main.js' %} "></script>
+  <script>
+    document.getElementById("apply-now-btn").addEventListener("click", function () {
+      document.getElementById("services").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
 
+  </script>
 </body>
 
 </html>
