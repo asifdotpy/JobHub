@@ -84,7 +84,8 @@
             <!--responsive box-->
             <div id="responsive-box-dev"
               style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
-              <form action="/apply_job" method="post" enctype="multipart/form-data">
+              <form action="{% url 'jobs:apply_job' job_title='full_stack_developer' %}" method="post"
+                enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group" style="margin-bottom: 20px;">
                   <label for="name" style="font-weight: bold;">Name:</label>
@@ -98,9 +99,8 @@
                 </div>
                 <div class="form-group" style="margin-bottom: 20px;">
                   <label for="resume" style="font-weight: bold;">Resume:</label>
-                  <input type="file" name="resume" id="resume" accept="application/pdf" onchange="this.form.submit()"
+                  <input type="file" name="resume" id="resume" accept="application/pdf"
                     style="padding: 10px; border-radius: 10px; border: 1px solid;">
-                  <progress id="progressBar" value="0" max="100" style="width:100%;"></progress>
                 </div>
                 <div class="form-group" style="margin-bottom: 20px;">
                   <label for="area" style="font-weight: bold;">Area:</label>
@@ -137,7 +137,8 @@
             <!--responsive box for marketing-->
             <div id="responsive-box-mar"
               style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
-              <form action="apply_job" method="post" enctype="multipart/form-data">
+              <form action="{% url 'jobs:apply_job' job_title='digital_marketing_manager' %}" method="post"
+                enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group" style="margin-bottom: 20px;">
                   <label for="name" style="font-weight: bold;">Name:</label>
@@ -151,9 +152,8 @@
                 </div>
                 <div class="form-group" style="margin-bottom: 20px;">
                   <label for="resume" style="font-weight: bold;">Resume:</label>
-                  <input type="file" name="resume" id="resume" accept="application/pdf" onchange="this.form.submit()"
+                  <input type="file" name="resume" id="resume" accept="application/pdf"
                     style="padding: 10px; border-radius: 10px; border: 1px solid;">
-                  <progress id="progressBar" value="0" max="100" style="width:100%;"></progress>
                 </div>
                 <div class="form-group" style="margin-bottom: 20px;">
                   <label for="area" style="font-weight: bold;">Area:</label>

@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from .forms import FullStackDeveloperForm, DigitalMarketingManagerForm
 from django.shortcuts import render, get_object_or_404
 from .models import JobOpening
+from django.contrib import messages
 
 
 def job_list(request):
@@ -47,37 +48,43 @@ def apply_job(request, job_title):
     if job_title == 'full_stack_developer':
         form = FullStackDeveloperForm(
             request.POST or None, request.FILES or None)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            address = form.cleaned_data['address']
-            area = form.cleaned_data['area']
-            resume = request.FILES['resume']
-            fs = FileSystemStorage()
-            filename = fs.save(resume.name, resume)
-            uploaded_file_url = fs.url(filename)
-            FullStackDeveloper.objects.create(
-                name=name,
-                address=address,
-                area=area,
-                resume=uploaded_file_url
-            )
-            return redirect('jobs/apply_job', job_title='full_stack_developer')
+        if request.method == 'POST':
+            if form.is_valid():
+                name = form.cleaned_data['name']
+                address = form.cleaned_data['address']
+                area = form.cleaned_data['area']
+                resume = request.FILES['resume']
+                fs = FileSystemStorage(location='jobs/resumes')
+                filename = fs.save(resume.name, resume)
+                uploaded_file_url = fs.url(filename)
+                FullStackDeveloper.objects.create(
+                    name=name,
+                    address=address,
+                    area=area,
+                    resume=uploaded_file_url
+                )
+                messages.success(
+                    request, 'Your application was submitted successfully!')
+                return redirect('jobs:apply_job', job_title=job_title)
     else:
         form = DigitalMarketingManagerForm(
             request.POST or None, request.FILES or None)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            address = form.cleaned_data['address']
-            area = form.cleaned_data['area']
-            resume = request.FILES['resume']
-            fs = FileSystemStorage()
-            filename = fs.save(resume.name, resume)
-            uploaded_file_url = fs.url(filename)
-            DigitalMarketingManager.objects.create(
-                name=name,
-                address=address,
-                area=area,
-                resume=uploaded_file_url
-            )
-            return redirect('jobs/apply_job', job_title='digital_marketing_manager')
+        if request.method == 'POST':
+            if form.is_valid():
+                name = form.cleaned_data['name']
+                address = form.cleaned_data['address']
+                area = form.cleaned_data['area']
+                resume = request.FILES['resume']
+                fs = FileSystemStorage(location='jobs/resumes')
+                filename = fs.save(resume.name, resume)
+                uploaded_file_url = fs.url(filename)
+                DigitalMarketingManager.objects.create(
+                    name=name,
+                    address=address,
+                    area=area,
+                    resume=uploaded_file_url
+                )
+                messages.success(
+                    request, 'Your application was submitted successfully!')
+                return redirect('jobs:apply_job', job_title=job_title)
     return render(request, 'jobs/apply_job.html', {'form': form, 'job_title': job_title})
