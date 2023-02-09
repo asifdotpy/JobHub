@@ -44,7 +44,7 @@ def apply_job(request, job_title):
         render: Renders the form for the selected job title.
         redirect: Redirects to the same page with a success message if the form is submitted successfully.
     """
-    if job_title == 'full-stack-developer':
+    if job_title == 'full_stack_developer':
         form = FullStackDeveloperForm(
             request.POST or None, request.FILES or None)
         if form.is_valid():
@@ -61,7 +61,7 @@ def apply_job(request, job_title):
                 area=area,
                 resume=uploaded_file_url
             )
-            return redirect('jobs/apply_job', job_title='full-stack-developer')
+            return redirect('jobs/apply_job', job_title='full_stack_developer')
     else:
         form = DigitalMarketingManagerForm(
             request.POST or None, request.FILES or None)
@@ -79,5 +79,5 @@ def apply_job(request, job_title):
                 area=area,
                 resume=uploaded_file_url
             )
-            return redirect('jobs/apply_job', job_title='digital-marketing-manager')
+            return redirect('jobs/apply_job', job_title='digital_marketing_manager')
     return render(request, 'jobs/apply_job.html', {'form': form, 'job_title': job_title})
