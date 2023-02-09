@@ -22,6 +22,7 @@
 
   <!-- Template Main CSS File -->
   <link href=" {% static 'assets/css/style.css' %} " rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 
@@ -64,37 +65,6 @@
     </div>
   </section>
 
-  <!-- ======= Services Section ======= -->
-  <!--<section id="services" class="services section-bg" style="padding: 144px 0;">
-  <section id="services" class="services section-bg" style="padding: 144px 0; flex: 1;>
-
-    <div class=" container" data-aos="fade-up">
-
-    <div class="section-title">
-      <p>Discover your dream job<br>among our extensive list of<br>opportunities!</p>
-    </div>
-
-    <div class="column">
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-        <div class="icon-box" id="specific-icon-box" style="width: 200px; height: 200px;">
-          <div class="icon"><i class="bx bxl-dribbble"></i></div>
-          <h4 class="title"><a href=" {% static '' %} ">Full Stack Developer</a></h4>
-        </div>
-
-      </div>
-
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
-        <div class="icon-box" id="specific-icon-box" style="width: 200px; height: 200px;">
-          <div class="icon"><i class="bx bxl-dribbble"></i></div>
-          <h4 class="title"><a href=" {% static '' %} ">Digital Marketing Manager</a></h4>
-        </div>
-
-      </div>
-
-    </div>
-
-    </div>
-  </section> End Services Section -->
   <section id="services" class="services section-bg" style="padding: 144px 0; flex: 1;">
     <div class="container" data-aos="fade-up">
       <div class="section-title">
@@ -109,7 +79,47 @@
             <h4 class="title" style="margin-bottom: 10px;">Full Stack Developer</a></h4>
             <p style="margin-bottom: 10px;">Develop and maintain websites, applications, and systems by utilizing
               knowledge of front-end and back-end technologies.</p>
-            <button style="background-color: #eb5d1e; border-radius: 10px; padding: 10px 20px;">Apply</button>
+            <button id="apply-btn1"
+              style="margin-bottom: 20px; background-color: #eb5d1e; border-radius: 10px; padding: 10px 20px;">Apply</button>
+            <!--responsive box-->
+            <div id="responsive-box-dev"
+              style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
+              <form action="/apply_job" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="name" style="font-weight: bold;">Name:</label>
+                  <input type="text" id="name" name="name" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="address" style="font-weight: bold;">Address:</label>
+                  <input type="text" id="address" name="address" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="resume" style="font-weight: bold;">Resume:</label>
+                  <input type="file" name="resume" id="resume" accept="application/pdf" onchange="this.form.submit()"
+                    style="padding: 10px; border-radius: 10px; border: 1px solid;">
+                  <progress id="progressBar" value="0" max="100" style="width:100%;"></progress>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="area" style="font-weight: bold;">Area:</label>
+                  <select id="area" name="area" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="Mirpur">Mirpur</option>
+                    <option value="Mohammadpur">Mohammadpur</option>
+                  </select>
+                </div>
+                <input type="submit" value="Submit"
+                  style="padding: 10px; background-color: #eb5d1e; color: #fff; border-radius: 5px;">
+              </form>
+              {% if form.is_valid %}
+              <p style="color: green;">Form submitted successfully!</p>
+              {% endif %}
+            </div>
+
+            <!--responsive page end-->
+
           </div>
         </div>
         <div class="col-md-12 col-lg-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
@@ -120,15 +130,58 @@
             </h4>
             <p style="margin-bottom: 10px;">Develop and execute effective digital marketing strategies to drive brand
               awareness, engagement, and lead generation.</p>
-            <button style="background-color: #eb5d1e; border-radius: 10px; padding: 10px 20px;">Apply</button>
+            <button id="apply-btn2"
+              style="background-color: #eb5d1e; border-radius: 10px; padding: 10px 20px;">Apply</button>
+            <!-- pop up created to open the job description and form-->
+
+            <!--responsive box for marketing-->
+            <div id="responsive-box-mar"
+              style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
+              <form action="apply_job" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="name" style="font-weight: bold;">Name:</label>
+                  <input type="text" id="name" name="name" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="address" style="font-weight: bold;">Address:</label>
+                  <input type="text" id="address" name="address" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="resume" style="font-weight: bold;">Resume:</label>
+                  <input type="file" name="resume" id="resume" accept="application/pdf" onchange="this.form.submit()"
+                    style="padding: 10px; border-radius: 10px; border: 1px solid;">
+                  <progress id="progressBar" value="0" max="100" style="width:100%;"></progress>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="area" style="font-weight: bold;">Area:</label>
+                  <select id="area" name="area" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="Mirpur">Mirpur</option>
+                    <option value="Mohammadpur">Mohammadpur</option>
+                  </select>
+                </div>
+                <input type="submit" value="Submit"
+                  style="padding: 10px; background-color: #eb5d1e; color: #fff; border-radius: 5px;">
+              </form>
+              {% if form.is_valid %}
+              <p style="color: green;">Form submitted successfully!</p>
+              {% endif %}
+            </div>
+
+            <!-- Add your responsive box content here -->
           </div>
         </div>
       </div>
+    </div>
 
     </div>
 
     </div>
   </section>
+  <!-- end services section here-->
 
   <!-- Main content ends here -->
 
@@ -220,7 +273,27 @@
         behavior: "smooth"
       });
     });
+    // Apply button for both boxes.
+    $(document).ready(function () {
+      $('#apply-btn1').click(function () {
+        $('#responsive-box-dev').toggle();
+      });
+      $('#apply-btn2').click(function () {
+        $('#responsive-box-mar').toggle();
+      });
+    });
+    // Get reference to the file input element
+    const input = document.getElementById("resume");
 
+    // Listen for change event on the file input
+    input.addEventListener("change", function () {
+      // Get the selected file
+      const file = this.files[0];
+
+      // Display the file name during the upload process
+      document.getElementById("resume").style.background = "lightgray";
+      document.getElementById("resume").innerHTML = file.name;
+    });
   </script>
 </body>
 
