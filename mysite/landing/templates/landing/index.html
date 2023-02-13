@@ -30,6 +30,9 @@
 
   <!-- Template Main CSS File -->
   <link href=" {% static 'assets/css/style.css' %} " rel="stylesheet">
+  <!-- Import icon from Font awesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 
 </head>
 
@@ -126,34 +129,179 @@
         </div>
 
         <div class="row">
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4 class="title"><a href=" {% static '' %} ">Client Centric Development</a></h4>
-            </div>
-          </div>
-
+          <!-- Services tab with inline css-->
+          <!--Box for web developmant-->
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href=" {% static '' %} ">Dedicated Development Team</a></h4>
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="bi bi-browser-chrome" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Web Development</a>
+              </h4>
+              <p class="description" style="font-size: 16px; color: #333; margin-top: 10px;">Building and designing
+                websites with latest technologies and user-friendly interface.</p>
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href=" {% static '' %} ">Excellent Support</a></h4>
+          <!--Box for Software Development-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="bi bi-laptop" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Software Development</a>
+              </h4>
+              <p class="description" style="font-size: 16px; color: #333; margin-top: 10px;">Developing high-quality,
+                scalable and user-friendly software to meet the needs of our clients.</p>
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href=" {% static '' %} ">Quality Deliverance</a></h4>
+          <!--Box for AI-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-robot" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">AI Development</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We offer advanced AI development services that can help you in automating and optimizing various
+                processes.
+              </p>
             </div>
           </div>
 
+          <!--Box for Mobile App Development-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-mobile-alt" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Mobile App Development</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We provide professional and efficient mobile app development services that can help you in expanding
+                your business and increasing your reach.
+              </p>
+            </div>
+          </div>
+
+          <!--Box for Call Center-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-phone-volume" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Call Center Services</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We provide professional call center services to handle all your inbound and outbound calls.
+              </p>
+            </div>
+          </div>
+          <!-- Box for SEO/Digital Marketing-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-search-dollar" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">SEO/Digital Marketing</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We provide professional and effective SEO and digital marketing services that can help you improve your
+                online visibility, reach your target audience, and grow your business.
+              </p>
+            </div>
+          </div>
+
+          <!-- Box for Networking-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-network-wired" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Networking</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                Our team of experts provides comprehensive and reliable networking solutions to help you manage and
+                secure your network infrastructure.
+              </p>
+            </div>
+          </div>
+
+          <!-- Box for Cloud Service-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-cloud" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Cloud Services</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                Our cloud services provide scalable and secure solutions for businesses of all sizes, allowing for easy
+                access and management of your data and applications from anywhere, at any time.
+              </p>
+            </div>
+          </div>
+
+          <!-- Box for Cyber Security-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-shield-alt" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Cyber Security</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We provide comprehensive cyber security solutions to protect your business and personal data from
+                malicious attacks.
+              </p>
+            </div>
+          </div>
+
+          <!-- Box for IT Support Office-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-toolbox" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">IT Support Office</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We provide reliable and efficient IT support services for office environments that can help you in
+                ensuring smooth
+                operation of your business processes.
+              </p>
+            </div>
+          </div>
+
+          <!-- Box for Game Development-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-gamepad" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Game Development</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We provide professional and innovative game development services that can help you in creating engaging
+                and entertaining games for all platforms.
+              </p>
+            </div>
+          </div>
+
+          <!--Class Row ends below the div-->
         </div>
 
       </div>
