@@ -1355,7 +1355,6 @@ section {
 #footer .footer-top .social-links a:hover {
   background: #ef7f4d;
   color: #ccc;
-  pointer-events: none;
   text-decoration: none;
 }
 
