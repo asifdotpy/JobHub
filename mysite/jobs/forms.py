@@ -25,9 +25,12 @@ class FullStackDeveloperForm(forms.ModelForm):
     Full Stack Developer Form:
     A form to capture the data from the job application for Full Stack Developer position.
     """
+    phone_number = forms.CharField(max_length=20)
+    cover_letter = forms.CharField(widget=forms.Textarea)
+
     class Meta:
         model = FullStackDeveloper
-        fields = ['name', 'address', 'resume', 'area']
+        fields = ['name', 'address', 'resume', 'phone_number', 'cover_letter']
 
 
 class DigitalMarketingManagerForm(forms.ModelForm):
@@ -35,6 +38,9 @@ class DigitalMarketingManagerForm(forms.ModelForm):
     Digital Marketing Manager Form:
     A form to capture the data from the job application for Digital Marketing Manager position.
     """
+    phone_number = forms.CharField(max_length=20)
+    cover_letter = forms.CharField(widget=forms.Textarea)
+
     class Meta:
         model = DigitalMarketingManager
-        fields = ['name', 'address', 'resume', 'area']
+        fields = ['name', 'address', 'resume', 'phone_number', 'cover_letter']

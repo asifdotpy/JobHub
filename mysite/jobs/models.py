@@ -33,7 +33,8 @@ class FullStackDeveloper(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
     address = models.CharField(max_length=100, blank=False, null=False)
     resume = models.FileField(upload_to='resumes/full_stack_developers/')
-    area = models.CharField(max_length=100, blank=False, null=False)
+    phone_number = models.CharField(max_length=20, blank=False, null=False)
+    cover_letter = models.TextField(blank=False, null=False)
 
     def __str__(self):
         return self.name
@@ -46,7 +47,8 @@ class DigitalMarketingManager(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
     address = models.CharField(max_length=100, blank=False, null=False)
     resume = models.FileField(upload_to='resumes/digital_marketing_managers/')
-    area = models.CharField(max_length=100, blank=False, null=False)
+    phone_number = models.CharField(max_length=20, blank=False, null=False)
+    cover_letter = models.TextField(blank=False, null=False)
 
     def __str__(self):
         return self.name

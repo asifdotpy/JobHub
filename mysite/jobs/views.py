@@ -32,19 +32,6 @@ def job_detail(request, pk):
 
 
 def apply_job(request, job_title):
-    """
-    This view function allows users to apply for either a Full Stack Developer or Digital Marketing Manager position.
-    Based on the job_title argument, the appropriate form is rendered and if the form is submitted successfully,
-    the data is stored in the relevant database model.
-
-    Args:
-        request: The request object that contains the data sent by the user.
-        job_title (str): The title of the job the user is applying for.
-
-    Returns:
-        render: Renders the form for the selected job title.
-        redirect: Redirects to the same page with a success message if the form is submitted successfully.
-    """
     if job_title == 'full_stack_developer':
         form = FullStackDeveloperForm(
             request.POST or None, request.FILES or None)
@@ -52,7 +39,8 @@ def apply_job(request, job_title):
             if form.is_valid():
                 name = form.cleaned_data['name']
                 address = form.cleaned_data['address']
-                area = form.cleaned_data['area']
+                phone_number = form.cleaned_data['phone_number']
+                cover_letter = form.cleaned_data['cover_letter']
                 resume = request.FILES['resume']
                 fs = FileSystemStorage(location='jobs/resumes')
                 filename = fs.save(resume.name, resume)
@@ -60,11 +48,12 @@ def apply_job(request, job_title):
                 FullStackDeveloper.objects.create(
                     name=name,
                     address=address,
-                    area=area,
+                    phone_number=phone_number,
+                    cover_letter=cover_letter,
                     resume=uploaded_file_url
                 )
                 messages.success(
-                    request, 'Your application was submitted successfully!')
+                    request, 'Your job application has been submitted!')
                 return redirect('jobs:apply_job', job_title=job_title)
     else:
         form = DigitalMarketingManagerForm(
@@ -73,7 +62,8 @@ def apply_job(request, job_title):
             if form.is_valid():
                 name = form.cleaned_data['name']
                 address = form.cleaned_data['address']
-                area = form.cleaned_data['area']
+                phone_number = form.cleaned_data['phone_number']
+                cover_letter = form.cleaned_data['cover_letter']
                 resume = request.FILES['resume']
                 fs = FileSystemStorage(location='jobs/resumes')
                 filename = fs.save(resume.name, resume)
@@ -81,10 +71,11 @@ def apply_job(request, job_title):
                 DigitalMarketingManager.objects.create(
                     name=name,
                     address=address,
-                    area=area,
+                    phone_number=phone_number,
+                    cover_letter=cover_letter,
                     resume=uploaded_file_url
                 )
                 messages.success(
-                    request, 'Your application was submitted successfully!')
+                    request, 'Your job application has been submitted!')
                 return redirect('jobs:apply_job', job_title=job_title)
     return render(request, 'jobs/apply_job.html', {'form': form, 'job_title': job_title})
