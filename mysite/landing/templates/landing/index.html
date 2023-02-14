@@ -381,38 +381,62 @@
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="{% url 'contact' %}" method="post" role="form">
+              {% csrf_token %}
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  <label for="id_name">Your Name</label>
+                  <input type="text" name="name" class="form-control" id="id_name" required
+                    value="{{ form.name.value }}">
+                  <div id="name-error" class="invalid-feedback">
+                    {% if form.name.errors %}
+                    {{ form.name.errors.as_text }}
+                    {% endif %}
+                  </div>
                 </div>
                 <div class="form-group col-md-6 mt-3 mt-md-0">
-                  <label for="email">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" aria-describedby="email-error">
+                  <label for="id_email">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="id_email" required
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" value="{{ form.email.value }}">
                   <div id="email-error" class="invalid-feedback">
-                    Please enter a valid email address.
+                    {% if form.email.errors %}
+                    {{ form.email.errors.as_text }}
+                    {% endif %}
                   </div>
                 </div>
               </div>
               <div class="form-group mt-3">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                <label for="id_subject">Subject</label>
+                <input type="text" class="form-control" name="subject" id="id_subject" required
+                  value="{{ form.subject.value }}">
+                <div id="subject-error" class="invalid-feedback">
+                  {% if form.subject.errors %}
+                  {{ form.subject.errors.as_text }}
+                  {% endif %}
+                </div>
               </div>
               <div class="form-group mt-3">
-                <label for="message">Message</label>
-                <textarea class="form-control" name="message" id="message" rows="10" required
-                  placeholder="Enter your message here"></textarea>
+                <label for="id_message">Message</label>
+                <textarea class="form-control" name="message" id="id_message" rows="10"
+                  required>{{ form.message.value }}</textarea>
+                <div id="message-error" class="invalid-feedback">
+                  {% if form.message.errors %}
+                  {{ form.message.errors.as_text }}
+                  {% endif %}
+                </div>
               </div>
               <div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center">
+                <button type="submit">Send Message</button>
+              </div>
             </form>
           </div>
+
+
 
         </div>
 

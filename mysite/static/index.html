@@ -30,6 +30,9 @@
 
   <!-- Template Main CSS File -->
   <link href=" {% static 'assets/css/style.css' %} " rel="stylesheet">
+  <!-- Import icon from Font awesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 
 </head>
 
@@ -51,7 +54,8 @@
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" id="jobs" href="#jobs">Apply for jobs</a></li>
+          <li><a class="getstarted scrollto" id="jobs" href="{% url 'jobs:job_list' %}" target="_blank">Apply for
+              jobs</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -70,7 +74,7 @@
             closely with clients to deliver beautiful, functional products through user-centered design and latest
             technology.</h2>
           <div>
-            <a href=" {% static '#about' %} " class="btn-get-started scrollto">Get Started</a>
+            <a href="#contact" class="btn-get-started scrollto">Contact Us</a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img">
@@ -125,42 +129,179 @@
         </div>
 
         <div class="row">
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4 class="title"><a href=" {% static '' %} ">Client Centric Development</a></h4>
-              <p class="description">We craft the client's needs on web, mobile, and blockchain to tailor the solutions
-                and enhance growth of the businesses.</p>
-            </div>
-          </div>
-
+          <!-- Services tab with inline css-->
+          <!--Box for web developmant-->
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href=" {% static '' %} ">Dedicated Development Team</a></h4>
-              <p class="description">Our skilled team leverage projects to provide best results.The team dedicates their
-                every effort and does not look back until it's accomplished.</p>
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="bi bi-browser-chrome" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Web Development</a>
+              </h4>
+              <p class="description" style="font-size: 16px; color: #333; margin-top: 10px;">Building and designing
+                websites with latest technologies and user-friendly interface.</p>
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href=" {% static '' %} ">Excellent Support</a></h4>
-              <p class="description">We are always there to assist our clients in every possible way to meet client's
-                expectations and end needs.</p>
+          <!--Box for Software Development-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="bi bi-laptop" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Software Development</a>
+              </h4>
+              <p class="description" style="font-size: 16px; color: #333; margin-top: 10px;">Developing high-quality,
+                scalable and user-friendly software to meet the needs of our clients.</p>
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href=" {% static '' %} ">Quality Deliverance</a></h4>
-              <p class="description">We believe in delivering quality products to our clients by assuring all their
-                project specifications at the best industry competitive price.</p>
+          <!--Box for AI-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-robot" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">AI Development</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We offer advanced AI development services that can help you in automating and optimizing various
+                processes.
+              </p>
             </div>
           </div>
 
+          <!--Box for Mobile App Development-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-mobile-alt" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Mobile App Development</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We provide professional and efficient mobile app development services that can help you in expanding
+                your business and increasing your reach.
+              </p>
+            </div>
+          </div>
+
+          <!--Box for Call Center-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-phone-volume" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Call Center Services</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We provide professional call center services to handle all your inbound and outbound calls.
+              </p>
+            </div>
+          </div>
+          <!-- Box for SEO/Digital Marketing-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-search-dollar" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">SEO/Digital Marketing</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We provide professional and effective SEO and digital marketing services that can help you improve your
+                online visibility, reach your target audience, and grow your business.
+              </p>
+            </div>
+          </div>
+
+          <!-- Box for Networking-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-network-wired" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Networking</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                Our team of experts provides comprehensive and reliable networking solutions to help you manage and
+                secure your network infrastructure.
+              </p>
+            </div>
+          </div>
+
+          <!-- Box for Cloud Service-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-cloud" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Cloud Services</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                Our cloud services provide scalable and secure solutions for businesses of all sizes, allowing for easy
+                access and management of your data and applications from anywhere, at any time.
+              </p>
+            </div>
+          </div>
+
+          <!-- Box for Cyber Security-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-shield-alt" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Cyber Security</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We provide comprehensive cyber security solutions to protect your business and personal data from
+                malicious attacks.
+              </p>
+            </div>
+          </div>
+
+          <!-- Box for IT Support Office-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-toolbox" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">IT Support Office</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We provide reliable and efficient IT support services for office environments that can help you in
+                ensuring smooth
+                operation of your business processes.
+              </p>
+            </div>
+          </div>
+
+          <!-- Box for Game Development-->
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" style="text-align: center; margin: 30px 0;">
+              <div class="icon" style="display: inline-block; font-size: 50px; color: #333; margin-bottom: 20px;">
+                <i class="fas fa-gamepad" style=""></i>
+              </div>
+              <h4 class="title" style="font-size: 20px; font-weight: bold; color: #333;">
+                <a href=" /static/ " style="text-decoration: none; color: #333;">Game Development</a>
+              </h4>
+              <p style="font-size: 14px; color: #333; margin-top: 10px;">
+                We provide professional and innovative game development services that can help you in creating engaging
+                and entertaining games for all platforms.
+              </p>
+            </div>
+          </div>
+
+          <!--Class Row ends below the div-->
         </div>
 
       </div>
@@ -240,38 +381,62 @@
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="{% url 'contact' %}" method="post" role="form">
+              {% csrf_token %}
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  <label for="id_name">Your Name</label>
+                  <input type="text" name="name" class="form-control" id="id_name" required
+                    value="{{ form.name.value }}">
+                  <div id="name-error" class="invalid-feedback">
+                    {% if form.name.errors %}
+                    {{ form.name.errors.as_text }}
+                    {% endif %}
+                  </div>
                 </div>
                 <div class="form-group col-md-6 mt-3 mt-md-0">
-                  <label for="email">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" aria-describedby="email-error">
+                  <label for="id_email">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="id_email" required
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" value="{{ form.email.value }}">
                   <div id="email-error" class="invalid-feedback">
-                    Please enter a valid email address.
+                    {% if form.email.errors %}
+                    {{ form.email.errors.as_text }}
+                    {% endif %}
                   </div>
                 </div>
               </div>
               <div class="form-group mt-3">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                <label for="id_subject">Subject</label>
+                <input type="text" class="form-control" name="subject" id="id_subject" required
+                  value="{{ form.subject.value }}">
+                <div id="subject-error" class="invalid-feedback">
+                  {% if form.subject.errors %}
+                  {{ form.subject.errors.as_text }}
+                  {% endif %}
+                </div>
               </div>
               <div class="form-group mt-3">
-                <label for="message">Message</label>
-                <textarea class="form-control" name="message" id="message" rows="10" required
-                  placeholder="Enter your message here"></textarea>
+                <label for="id_message">Message</label>
+                <textarea class="form-control" name="message" id="id_message" rows="10"
+                  required>{{ form.message.value }}</textarea>
+                <div id="message-error" class="invalid-feedback">
+                  {% if form.message.errors %}
+                  {{ form.message.errors.as_text }}
+                  {% endif %}
+                </div>
               </div>
               <div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center">
+                <button type="submit">Send Message</button>
+              </div>
             </form>
           </div>
+
+
 
         </div>
 
@@ -335,16 +500,31 @@
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Social Networks</h4>
-            <p>Coming Soon</p>
+            <p>Follow us on social media.</p>
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="https://www.twitter.com/dotpotit" class="twitter" target="_blank"><i
+                  class="bx bxl-twitter"></i></a>
+              <a href="https://www.facebook.com/dotpotit" class="facebook" target="_blank"><i
+                  class="bx bxl-facebook"></i></a>
+              <a href="https://wa.me/+8801817176192" class="whatsapp" target="_blank"><i
+                  class="bx bxl-whatsapp"></i></a>
+              <a href="https://www.github.com/dotpotit" class="github" target="_blank"><i class="bx bxl-github"></i></a>
+              <a href="https://www.linkedin.com/in/dotpotit" class="linkedin" target="_blank"><i
+                  class="bx bxl-linkedin"></i></a>
+            </div>
+
+            <div class="social-links mt-3">
+              <a href="https://www.youtube.com/@dotpotit" class="youtube" target="_blank"><i
+                  class="bx bxl-youtube"></i></a>
+              <a href="https://www.tiktok.com/@dotpotit" class="tiktok" target="_blank"><i
+                  class="bx bxl-tiktok"></i></a>
+              <a href="https://t.me/dotpotit" class="telegram" target="_blank"><i class="bx bxl-telegram"></i></a>
+              <a href="https://www.instagram.com/dotpotit" class="instagram" target="_blank"><i
+                  class="bx bxl-instagram"></i></a>
+              <a href="https://snapchat.com/add/dotpotit" class="snapchat" target="_blank"><i
+                  class="bx bxl-snapchat"></i></a>
             </div>
           </div>
-
         </div>
       </div>
     </div>

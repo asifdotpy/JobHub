@@ -6,4 +6,5 @@ from . import views
 # landing app root directory sets to website root directory
 urlpatterns = [
     path('', views.index, name='index'),
+    path('contact/', views.contact_view, name='contact'),
 ]
