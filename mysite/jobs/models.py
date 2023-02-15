@@ -32,6 +32,7 @@ class FullStackDeveloper(models.Model):
     """
     name = models.CharField(max_length=100, blank=False, null=False)
     address = models.CharField(max_length=100, blank=False, null=False)
+    # resume folders will be full_stack_developer instead of full_stack_developers
     resume = models.FileField(upload_to='resumes/full_stack_developers/')
     phone_number = models.CharField(max_length=20, blank=False, null=False)
     cover_letter = models.TextField(blank=False, null=False)
@@ -46,6 +47,7 @@ class DigitalMarketingManager(models.Model):
     """
     name = models.CharField(max_length=100, blank=False, null=False)
     address = models.CharField(max_length=100, blank=False, null=False)
+    # resume folders will be digital_marketing_manager instead of digital_marketing_managers
     resume = models.FileField(upload_to='resumes/digital_marketing_managers/')
     phone_number = models.CharField(max_length=20, blank=False, null=False)
     cover_letter = models.TextField(blank=False, null=False)
