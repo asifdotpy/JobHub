@@ -28,6 +28,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# Due to forbidden error on admin site CSRF Trusted Origin is set.
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://dotpotit.com',
+    'http://dotpotit.com'
+]
 
 # Application definition
 
@@ -126,8 +132,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Setting up staticfiles directories
 STATICFILES_DIRS = [
     BASE_DIR / "landing/templates/landing",
-    BASE_DIR / "jobs/templates/jobs",    
-    ]
+    BASE_DIR / "jobs/templates/jobs",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
