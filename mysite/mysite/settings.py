@@ -14,8 +14,10 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-# Loading environments variables
-load_dotenv()
+# Loading environments variables for the .env file. which is located into the base directory
+
+dotenv_path = os.path.join(BASE_DIR, '.env')
+load_dotenv(dotenv_path)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
