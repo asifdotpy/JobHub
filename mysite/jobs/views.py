@@ -42,7 +42,7 @@ def apply_job(request, job_title):
                 phone_number = form.cleaned_data['phone_number']
                 cover_letter = form.cleaned_data['cover_letter']
                 resume = request.FILES['resume']
-                fs = FileSystemStorage(location='jobs/resumes')
+                fs = FileSystemStorage(location='resumes/full_stack_developer')
                 filename = fs.save(resume.name, resume)
                 uploaded_file_url = fs.url(filename)
                 FullStackDeveloper.objects.create(
@@ -65,7 +65,8 @@ def apply_job(request, job_title):
                 phone_number = form.cleaned_data['phone_number']
                 cover_letter = form.cleaned_data['cover_letter']
                 resume = request.FILES['resume']
-                fs = FileSystemStorage(location='jobs/resumes')
+                fs = FileSystemStorage(
+                    location='resumes/digital_marketing_manager')
                 filename = fs.save(resume.name, resume)
                 uploaded_file_url = fs.url(filename)
                 DigitalMarketingManager.objects.create(
