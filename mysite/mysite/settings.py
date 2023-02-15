@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Due to forbidden error on admin site CSRF Trusted Origin is set.
 
 CSRF_TRUSTED_ORIGINS = [
-    'dotpotit.com'
+    'https://dotpotit.com'
 ]
 
 # Application definition
