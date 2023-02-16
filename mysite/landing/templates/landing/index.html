@@ -33,6 +33,13 @@
   <!-- Import icon from Font awesome-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
     integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  <style>
+    #header .logo img {
+      padding: 0;
+      margin: 0;
+      max-height: 166px;
+    }
+  </style>
 
 </head>
 
@@ -43,9 +50,10 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href=" {% static 'index.html' %} "><span>Dotpot iT</span></a></h1>
+        <!--  <h1 class="text-light"><a href=" {% static 'index.html' %} "><span>Dotpot iT</span></a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href=" {% static 'index.html' %} "><img src=" {% static 'assets/img/logo.png' %} " alt="" class="img-fluid"></a>-->
+        <a href=" {% static 'index.html' %} "><img src=" {% static 'assets/img/logo.png' %} "
+            style="max-width: 100%; height: 200px;" alt="company-logo" class=" img-fluid"></a>
       </div>
 
       <nav id="navbar" class="navbar">
