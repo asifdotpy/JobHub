@@ -23,6 +23,13 @@
   <!-- Template Main CSS File -->
   <link href=" {% static 'assets/css/style.css' %} " rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    #header .logo img {
+      padding: 0;
+      margin: 0;
+      max-height: 166px;
+    }
+  </style>
 
 </head>
 
@@ -33,9 +40,9 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href=" {% static 'index.html' %} "><span>Dotpot iT</span></a></h1>
+        <!-- <h1 class="text-light"><a href=" {% static 'index.html' %} "><span>Dotpot iT</span></a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href=" {% static 'index.html' %} "><img src=" {% static 'assets/img/logo.png' %} " alt="" class="img-fluid"></a>-->
+        <a href="https://dotpotit.com"><img src=" {% static 'assets/img/logo.png' %} " alt="" class="img-fluid"></a>
       </div>
 
     </div>
