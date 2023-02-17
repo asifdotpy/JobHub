@@ -1,5 +1,8 @@
 # views.py
 
+from django.conf import settings
+from django.core.mail import send_mail
+from django.utils.crypto import get_random_string
 from django.core.files.storage import FileSystemStorage
 from .models import FullStackDeveloper, DigitalMarketingManager
 from django.shortcuts import render, redirect
@@ -40,18 +43,31 @@ def apply_job(request, job_title):
                 name = form.cleaned_data['name']
                 address = form.cleaned_data['address']
                 phone_number = form.cleaned_data['phone_number']
+                email = form.cleaned_data['email']
                 cover_letter = form.cleaned_data['cover_letter']
                 resume = request.FILES['resume']
                 fs = FileSystemStorage(location='resumes/full_stack_developer')
                 filename = fs.save(resume.name, resume)
                 uploaded_file_url = fs.url(filename)
-                FullStackDeveloper.objects.create(
-                    name=name,
-                    address=address,
-                    phone_number=phone_number,
-                    cover_letter=cover_letter,
-                    resume=uploaded_file_url
-                )
+                activation_key = get_random_string(length=32)
+
+                # Set session data to indicate that the application is pending activation
+                request.session['job_application'] = {
+                    'name': name,
+                    'address': address,
+                    'phone_number': phone_number,
+                    'email': email,
+                    'cover_letter': cover_letter,
+                    'resume_url': uploaded_file_url,
+                    'activation_key': activation_key,
+                }
+
+                # Send activation email to the user
+                subject = 'Activate your job application'
+                message = f'Hi {name}, please click the following link to activate your job application: https://{settings.ALLOWED_HOSTS[0]}/activate/{activation_key}'
+                send_mail(subject, message, 'career@dotpotit.com',
+                          [email], fail_silently=False)
+
                 messages.success(
                     request, 'Your job application has been submitted!')
                 return redirect('jobs:apply_job', job_title=job_title)
@@ -63,19 +79,32 @@ def apply_job(request, job_title):
                 name = form.cleaned_data['name']
                 address = form.cleaned_data['address']
                 phone_number = form.cleaned_data['phone_number']
+                email = form.cleaned_data['email']
                 cover_letter = form.cleaned_data['cover_letter']
                 resume = request.FILES['resume']
                 fs = FileSystemStorage(
                     location='resumes/digital_marketing_manager')
                 filename = fs.save(resume.name, resume)
                 uploaded_file_url = fs.url(filename)
-                DigitalMarketingManager.objects.create(
-                    name=name,
-                    address=address,
-                    phone_number=phone_number,
-                    cover_letter=cover_letter,
-                    resume=uploaded_file_url
-                )
+                activation_key = get_random_string(length=32)
+
+                # Set session data to indicate that the application is pending activation
+                request.session['job_application'] = {
+                    'name': name,
+                    'address': address,
+                    'phone_number': phone_number,
+                    'email': email,
+                    'cover_letter': cover_letter,
+                    'resume_url': uploaded_file_url,
+                    'activation_key': activation_key,
+                }
+
+                # Send activation email to the user
+                subject = 'Activate your job application'
+                message = f'Hi {name}, please click the following link to activate your job application: https://{settings.ALLOWED_HOSTS[0]}/activate/{activation_key}'
+                send_mail(subject, message, 'career@dotpotit.com',
+                          [email], fail_silently=False)
+
                 messages.success(
                     request, 'Your job application has been submitted!')
                 return redirect('jobs:apply_job', job_title=job_title)

@@ -1,44 +1,83 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Successful Application</title>
-    <style>
-      body {
-        background-color: #F2F2F2;
-        font-family: Arial, sans-serif;
-      }
+<html lang="en">
 
-      .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Thank You for Applying!</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fef8f5;
+      font-family: "Raleway", sans-serif;
+    }
 
-      .message {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        text-align: center;
-      }
+    .container {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-      h1 {
-        font-size: 36px;
-        font-weight: bold;
-        color: #eb5d1e;
-        margin-bottom: 20px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="message">
-        <h1>You have successfully applied</h1>
+    .card {
+      background-color: #fff;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .card-header {
+      background-color: #eb5d1e;
+      color: #fff;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 20px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .card-body {
+      padding: 30px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: #eb5d1e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <h3>Thank You for Applying!</h3>
+            </div>
+            <div class="card-body">
+              <p>We have received your job application. Please check your email (including your spam folder) for a
+                confirmation message.</p>
+              <p>If you have any questions or concerns, please email us at <a
+                  href="mailto:career@dotpotit.com">career@dotpotit.com</a>.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+</body>
 
+</html>

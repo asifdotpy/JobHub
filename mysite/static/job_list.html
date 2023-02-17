@@ -23,6 +23,13 @@
   <!-- Template Main CSS File -->
   <link href=" {% static 'assets/css/style.css' %} " rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    #header .logo img {
+      padding: 0;
+      margin: 0;
+      max-height: 166px;
+    }
+  </style>
 
 </head>
 
@@ -33,9 +40,9 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href=" {% static 'index.html' %} "><span>Dotpot iT</span></a></h1>
+        <!-- <h1 class="text-light"><a href=" {% static 'index.html' %} "><span>Dotpot iT</span></a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href=" {% static 'index.html' %} "><img src=" {% static 'assets/img/logo.png' %} " alt="" class="img-fluid"></a>-->
+        <a href="https://dotpotit.com"><img src=" {% static 'assets/img/logo.png' %} " alt="" class="img-fluid"></a>
       </div>
 
     </div>
@@ -97,6 +104,11 @@
                     style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
                 </div>
                 <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="email" style="font-weight: bold;">Email:</label>
+                  <input type="email" id="email" name="email" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
                   <label for="address" style="font-weight: bold;">Address:</label>
                   <input type="text" id="address" name="address" required
                     style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
@@ -153,6 +165,11 @@
                 <div class="form-group" style="margin-bottom: 20px;">
                   <label for="name" style="font-weight: bold;">Name:</label>
                   <input type="text" id="name" name="name" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="email" style="font-weight: bold;">Email:</label>
+                  <input type="email" id="email" name="email" required
                     style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
                 </div>
                 <div class="form-group" style="margin-bottom: 20px;">
@@ -227,25 +244,40 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>Contact Us</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              <li><i class="bx bx-chevron-right"></i>help@dotpotit.com</li>
+              <li><i class="bx bx-chevron-right"></i>marketing@dotpotit.com</li>
+              <li><i class="bx bx-chevron-right"></i>sales@dotpotit.com</li>
+              <li><i class="bx bx-chevron-right"></i>hr@dotpotit.com</li>
+              <li><i class="bx bx-chevron-right"></i>career@dotpotit.com</li>
             </ul>
           </div>
-
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Social Networks</h4>
-            <p>Coming Soon</p>
+            <p>Follow us on social media.</p>
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="https://www.twitter.com/dotpotit" class="twitter" target="_blank"><i
+                  class="bx bxl-twitter"></i></a>
+              <a href="https://www.facebook.com/dotpotit" class="facebook" target="_blank"><i
+                  class="bx bxl-facebook"></i></a>
+              <a href="https://wa.me/+8801817176192" class="whatsapp" target="_blank"><i
+                  class="bx bxl-whatsapp"></i></a>
+              <a href="https://www.github.com/dotpotit" class="github" target="_blank"><i class="bx bxl-github"></i></a>
+              <a href="https://www.linkedin.com/in/dotpotit" class="linkedin" target="_blank"><i
+                  class="bx bxl-linkedin"></i></a>
+            </div>
+
+            <div class="social-links mt-3">
+              <a href="https://www.youtube.com/@dotpotit" class="youtube" target="_blank"><i
+                  class="bx bxl-youtube"></i></a>
+              <a href="https://www.tiktok.com/@dotpotit" class="tiktok" target="_blank"><i
+                  class="bx bxl-tiktok"></i></a>
+              <a href="https://t.me/dotpotit" class="telegram" target="_blank"><i class="bx bxl-telegram"></i></a>
+              <a href="https://www.instagram.com/dotpotit" class="instagram" target="_blank"><i
+                  class="bx bxl-instagram"></i></a>
+              <a href="https://snapchat.com/add/dotpotit" class="snapchat" target="_blank"><i
+                  class="bx bxl-snapchat"></i></a>
             </div>
           </div>
 

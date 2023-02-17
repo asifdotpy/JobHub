@@ -147,3 +147,13 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Setting up mail for our user
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'box.dotpotit.com'  # your Mail-in-a-Box SMTP server address
+EMAIL_PORT = 587  # your Mail-in-a-Box SMTP port
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'career@dotpotit.com'  # your email address
+EMAIL_HOST_PASSWORD = PASSWORD = os.environ.get(
+    'PASSWORD')  # your email password
+DEFAULT_FROM_EMAIL = 'career@dotpotit.com'  # default sender email address
+SERVER_EMAIL = 'career@dotpotit.com'  # email address for error messages
