@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from jobs.views import activate_job_application
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
