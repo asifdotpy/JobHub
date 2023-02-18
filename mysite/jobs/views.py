@@ -57,7 +57,7 @@ def apply_job(request, job_title):
 
                 # Send activation email to the user
                 subject = 'Activate your job application'
-                message = f'Hi {name}, please click the following link to activate your job application: http://127.0.0.1:8000/jobs/activate/{activation_key}'
+                message = f'Hi {name}, please click the following link to activate your job application: https://dotpotit.com/jobs/activate/{activation_key}'
                 send_mail(subject, message, 'career@dotpotit.com',
                           [email], fail_silently=False)
 
@@ -94,7 +94,7 @@ def apply_job(request, job_title):
 
                 # Send activation email to the user
                 subject = 'Activate your job application'
-                message = f'Hi {name}, please click the following link to activate your job application: http://127.0.0.1:8000/jobs/activate/{activation_key}'
+                message = f'Hi {name}, please click the following link to activate your job application: https://dotpotit.com/jobs/activate/{activation_key}'
                 send_mail(subject, message, 'career@dotpotit.com',
                           [email], fail_silently=False)
 
