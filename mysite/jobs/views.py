@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.utils.crypto import get_random_string
 from django.core.files.storage import FileSystemStorage
-from .models import FullStackDeveloper, DigitalMarketingManager
+from .models import FullStackDeveloper, DigitalMarketingManager, JobApplication
 from django.shortcuts import render, redirect
 from .forms import FullStackDeveloperForm, DigitalMarketingManagerForm
 from django.shortcuts import render, get_object_or_404
