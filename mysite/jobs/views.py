@@ -65,7 +65,6 @@ def apply_job(request, job_title):
 
 # Activate job application function will save the data after the apply_job
 # function triggered.
-
 def activate_job_application(request, activation_key):
     """
     Activates a job application for the given activation key.
@@ -80,11 +79,14 @@ def activate_job_application(request, activation_key):
     Returns:
         A redirect to the success page for the job title of the activated application.
     """
+    logger.info('Activating job application for activation key: %s', activation_key)
+
     # Look up the job application using the activation key
     try:
         job_application_data = JobApplication.objects.get(
             activation_key=activation_key)
     except JobApplication.DoesNotExist:
+        logger.warning('Invalid activation link: %s', activation_key)
         messages.error(
             request, 'Invalid activation link. Please contact us if you need further assistance.')
         return redirect('jobs:job_list')
@@ -121,8 +123,10 @@ def activate_job_application(request, activation_key):
 
         # Delete the job application data from the database
         job_application_data.delete()
+        logger.info('Job application data deleted for %s', job_application_data.email)
 
     else:
+        logger.warning('Invalid activation link: %s', activation_key)
         messages.error(
             request, 'Invalid activation link. Please contact us if you need further assistance.')
         job_title = None
