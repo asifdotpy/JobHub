@@ -1,6 +1,8 @@
 # models.py
 
+from __future__ import annotations
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class JobOpening(models.Model):
@@ -24,6 +26,32 @@ class JobOpening(models.Model):
         Return a string representation of the job opening.
         """
         return self.title
+
+
+# The `JobApplication` model represents a job application submitted by a user. It stores information about the user, their resume, the job title, activation key, and whether the application has been activated.
+# It also includes timestamps for when the application was created and last updated.
+
+class JobApplication(models.Model):
+    name: str = models.CharField(_("Name"), max_length=255)
+    address: str = models.CharField(_("Address"), max_length=255)
+    phone_number: str = models.CharField(_("Phone Number"), max_length=255)
+    email: str = models.EmailField(_("Email"))
+    cover_letter: str = models.TextField(_("Cover Letter"))
+    resume: str = models.FileField(_("Resume"), upload_to='resumes/')
+    job_title: str = models.CharField(_("Job Title"), max_length=255)
+    activation_key: str = models.CharField(
+        _("Activation Key"), max_length=32, unique=True)
+    is_active: bool = models.BooleanField(_("Is Active"), default=False)
+    created_at: datetime = models.DateTimeField(
+        _("Created At"), auto_now_add=True)
+    updated_at: datetime = models.DateTimeField(_("Updated At"), auto_now=True)
+
+    class Meta:
+        verbose_name: str = _("Job Application")
+        verbose_name_plural: str = _("Job Applications")
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class FullStackDeveloper(models.Model):
