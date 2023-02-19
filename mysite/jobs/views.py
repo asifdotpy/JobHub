@@ -62,7 +62,7 @@ def apply_job(request, job_title):
                 request, 'Your job application has been submitted!')
             return redirect('jobs:apply_job', job_title=job_title)
 
-    return render(request, 'jobs/apply_job.html', {'form': form, 'job_title': job_title})
+    return render(request, 'jobs/apply_job.html', {'job_title': job_title})
 
 
 # Activate job application function will save the data after the apply_job
