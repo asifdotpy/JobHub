@@ -34,49 +34,52 @@ def success(request, activation_key):
 
 def apply_job(request, job_title):
     if job_title == 'full_stack_developer':
-        form = FullStackDeveloperForm(
-            request.POST or None, request.FILES or None)
+        form = FullStackDeveloperForm(request.POST or None, request.FILES or None)
     else:
-        form = DigitalMarketingManagerForm(
-            request.POST or None, request.FILES or None)
+        form = DigitalMarketingManagerForm(request.POST or None, request.FILES or None)
 
     if request.method == 'POST':
         if form.is_valid():
-            name = form.cleaned_data['name']
-            address = form.cleaned_data['address']
-            phone_number = form.cleaned_data['phone_number']
-            email = form.cleaned_data['email']
-            cover_letter = form.cleaned_data['cover_letter']
+            job_application = form.save(commit=False)
             activation_key = get_random_string(length=32)
 
-            # Set session data to indicate that the application is pending activation
-            request.session['job_application'] = {
-                'name': name,
-                'address': address,
-                'phone_number': phone_number,
-                'email': email,
-                'cover_letter': cover_letter,
-                'activation_key': activation_key,
-            }
+            # Save the job application in the database
+            job_application.activation_key = activation_key
+            job_application.job_title = job_title
+            job_application.save()
 
             logger.info('Job application submitted for %s', job_title)
 
             # Send activation email to the user
             subject = 'Activate your job application'
-            message = f'Hi {name}, please click the following link to activate your job application: https://dotpotit.com/jobs/activate/{activation_key}'
-            send_mail(subject, message, 'career@dotpotit.com',
-                      [email], fail_silently=False)
+            message = f'Hi {job_application.name}, please click the following link to activate your job application: https://dotpotit.com/jobs/activate/{activation_key}'
+            send_mail(subject, message, 'career@dotpotit.com', [job_application.email], fail_silently=False)
 
-            logger.info('Activation email sent to %s', email)
+            logger.info('Activation email sent to %s', job_application.email)
 
-            messages.success(
-                request, 'Your job application has been submitted!')
+            messages.success(request, 'Your job application has been submitted!')
             return redirect('jobs:apply_job', job_title=job_title)
 
     return render(request, 'jobs/apply_job.html', {'form': form, 'job_title': job_title})
 
 
+# Activate job application function will save the data after the apply_job
+# function triggered.
+
 def activate_job_application(request, activation_key):
+    """
+    Activates a job application for the given activation key.
+
+    When a user clicks the activation link sent to their email after submitting
+    a job application, this function is called to activate the application.
+
+    Args:
+        request: The HTTP request.
+        activation_key (str): The activation key to use to activate the application.
+
+    Returns:
+        A redirect to the success page for the job title of the activated application.
+    """
     # Look up the job application using the activation key
     try:
         job_application_data = JobApplication.objects.get(
@@ -88,6 +91,7 @@ def activate_job_application(request, activation_key):
 
     if job_application_data:
         if job_application_data.job_title == 'full_stack_developer':
+            # Create a FullStackDeveloper object and save it to the database
             fs_developer = FullStackDeveloper.objects.create(
                 name=job_application_data.name,
                 email=job_application_data.email,
@@ -98,6 +102,7 @@ def activate_job_application(request, activation_key):
             )
             fs_developer.save()
         elif job_application_data.job_title == 'digital_marketing_manager':
+            # Create a DigitalMarketingManager object and save it to the database
             dm_manager = DigitalMarketingManager.objects.create(
                 name=job_application_data.name,
                 email=job_application_data.email,
@@ -110,6 +115,7 @@ def activate_job_application(request, activation_key):
 
         messages.success(
             request, 'Your job application has been activated! Thank you for applying.')
+        logger.info('Job application activated for %s', job_application_data.email)
 
         job_title = job_application_data.job_title
 
