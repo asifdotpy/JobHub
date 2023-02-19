@@ -21,11 +21,9 @@ def job_list(request):
     """
     A view to display a list of all job openings.
     """
-    # Get a list of all job openings
-    jobs = JobOpening.objects.all()
 
     # Render the template with the list of jobs and return the response to the user
-    return render(request, 'jobs/job_list.html', {'jobs': jobs})
+    return render(request, 'jobs/job_list.html')
 
 
 def success(request, activation_key):
@@ -34,9 +32,11 @@ def success(request, activation_key):
 
 def apply_job(request, job_title):
     if job_title == 'full_stack_developer':
-        form = FullStackDeveloperForm(request.POST or None, request.FILES or None)
+        form = FullStackDeveloperForm(
+            request.POST or None, request.FILES or None)
     else:
-        form = DigitalMarketingManagerForm(request.POST or None, request.FILES or None)
+        form = DigitalMarketingManagerForm(
+            request.POST or None, request.FILES or None)
 
     if request.method == 'POST':
         if form.is_valid():
@@ -53,11 +53,13 @@ def apply_job(request, job_title):
             # Send activation email to the user
             subject = 'Activate your job application'
             message = f'Hi {job_application.name}, please click the following link to activate your job application: https://dotpotit.com/jobs/activate/{activation_key}'
-            send_mail(subject, message, 'career@dotpotit.com', [job_application.email], fail_silently=False)
+            send_mail(subject, message, 'career@dotpotit.com',
+                      [job_application.email], fail_silently=False)
 
             logger.info('Activation email sent to %s', job_application.email)
 
-            messages.success(request, 'Your job application has been submitted!')
+            messages.success(
+                request, 'Your job application has been submitted!')
             return redirect('jobs:apply_job', job_title=job_title)
 
     return render(request, 'jobs/apply_job.html', {'form': form, 'job_title': job_title})
@@ -79,7 +81,8 @@ def activate_job_application(request, activation_key):
     Returns:
         A redirect to the success page for the job title of the activated application.
     """
-    logger.info('Activating job application for activation key: %s', activation_key)
+    logger.info(
+        'Activating job application for activation key: %s', activation_key)
 
     # Look up the job application using the activation key
     try:
@@ -117,13 +120,15 @@ def activate_job_application(request, activation_key):
 
         messages.success(
             request, 'Your job application has been activated! Thank you for applying.')
-        logger.info('Job application activated for %s', job_application_data.email)
+        logger.info('Job application activated for %s',
+                    job_application_data.email)
 
         job_title = job_application_data.job_title
 
         # Delete the job application data from the database
         job_application_data.delete()
-        logger.info('Job application data deleted for %s', job_application_data.email)
+        logger.info('Job application data deleted for %s',
+                    job_application_data.email)
 
     else:
         logger.warning('Invalid activation link: %s', activation_key)
