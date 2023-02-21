@@ -116,8 +116,10 @@
                 <div class="form-group" style="margin-bottom: 20px;">
                   <label for="phone" style="font-weight: bold;">Phone Number:</label>
                   <input type="text" id="phone" name="phone_number" required
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'');"
                     style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
                 </div>
+
                 <div class="form-group" style="margin-bottom: 20px;">
                   <label for="resume" style="font-weight: bold;">Resume:</label>
                   <input type="file" name="resume" id="resume" accept="application/pdf"
@@ -131,9 +133,6 @@
                 <input type="submit" value="Submit"
                   style="padding: 10px; background-color: #eb5d1e; color: #fff; border-radius: 5px;">
               </form>
-              {% if form.is_valid %}
-              <p style="color: green;">Form submitted successfully!</p>
-              {% endif %}
             </div>
 
 
@@ -180,8 +179,10 @@
                 <div class="form-group" style="margin-bottom: 20px;">
                   <label for="phone" style="font-weight: bold;">Phone Number:</label>
                   <input type="text" id="phone" name="phone_number" required
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'');"
                     style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
                 </div>
+
                 <div class="form-group" style="margin-bottom: 20px;">
                   <label for="resume" style="font-weight: bold;">Resume:</label>
                   <input type="file" name="resume" id="resume" accept="application/pdf"
@@ -195,9 +196,6 @@
                 <input type="submit" value="Submit"
                   style="padding: 10px; background-color: #eb5d1e; color: #fff; border-radius: 5px;">
               </form>
-              {% if form.is_valid %}
-              <p style="color: green;">Form submitted successfully!</p>
-              {% endif %}
             </div>
 
 
