@@ -178,3 +178,8 @@ EMAIL_HOST_PASSWORD = PASSWORD = os.environ.get(
     'PASSWORD')  # your email password
 DEFAULT_FROM_EMAIL = 'career@dotpotit.com'  # default sender email address
 SERVER_EMAIL = 'career@dotpotit.com'  # email address for error messages
+
+# Add media files directory for resumes.
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
