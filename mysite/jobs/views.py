@@ -16,6 +16,74 @@ from django.contrib import messages
 # Added logger
 logger = logging.getLogger(__name__)
 
+# This text will be sent to the email for styling
+message = f"""
+<html>
+	<head>
+		<title>Job Application Submitted - DotPot IT</title>
+		<style>
+			body {{
+				font-family: Arial, sans-serif;
+				background-color: #f8f9fa;
+				color: #343a40;
+				padding: 2rem;
+			}}
+
+			h1 {{
+				font-size: 2rem;
+				text-align: center;
+				margin-bottom: 2rem;
+			}}
+
+			.success-message {{
+				max-width: 40rem;
+				margin: 0 auto;
+				background-color: #eb5d1e;
+				box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+				border-radius: 0.25rem;
+				padding: 2rem;
+				text-align: center;
+			}}
+
+			.success-message p {{
+				margin-bottom: 1rem;
+				font-size: 1.1rem;
+				line-height: 1.5;
+				color: #fef8f5;
+			}}
+
+			.success-message a {{
+				display: inline-block;
+				margin-top: 2rem;
+				padding: 0.5rem 1rem;
+				background-color: #fef8f5;
+				color: #eb5d1e;
+				border-radius: 0.25rem;
+				text-decoration: none;
+			}}
+
+			.success-message a:hover {{
+				background-color: #343a40;
+				color: #fef8f5;
+			}}
+		</style>
+	</head>
+
+	<body>
+		<div class="success-message">
+			<h1>Job Application Submitted</h1>
+			<p>Thank you for submitting your job application to DotPot IT. Your application has been received and is
+				currently pending review.</p>
+			<p>You will receive an email notification once your application has been processed. Please check your inbox and
+				spam folder for this email, and click the activation link within to complete the application process.</p>
+			<a href="https://dotpotit.com/jobs/activate/{activation_key}">Activate your job application</a>
+			<p>If you have any questions or concerns, please <a href="https://dotpotit.com/#contact">contact us</a> for
+				assistance.</p>
+		</div>
+	</body>
+</html>
+"""
+
 
 def job_list(request):
     """
@@ -52,8 +120,6 @@ def apply_job(request, job_title):
 
             # Send activation email to the user
             subject = 'Activate your job application'
-            message = f'Hi {job_application.name},<br><br>Thank you for applying for the {job_title} position at DotPot IT.<br><br>Please click the button below to activate your job application:<br><br><a href="https://dotpotit.com/jobs/activate/{activation_key}" style="background-color: #eb5d1e; color: #fef8f5; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Activate</a><br><br>Best regards,<br>The DotPot IT Team'
-
             send_mail(subject, message, 'career@dotpotit.com',
                       [job_application.email], fail_silently=False, html_message=message)
 
