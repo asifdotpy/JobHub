@@ -17,7 +17,44 @@ from django.contrib import messages
 logger = logging.getLogger(__name__)
 
 # This text will be sent to the email for styling
-message = f"""
+
+
+def job_list(request):
+    """
+    A view to display a list of all job openings.
+    """
+
+    # Render the template with the list of jobs and return the response to the user
+    return render(request, 'jobs/job_list.html')
+
+
+def success(request, activation_key):
+    return render(request, 'jobs/success.html', {'activation_key': activation_key})
+
+
+def apply_job(request, job_title):
+    if job_title == 'full_stack_developer':
+        form = FullStackDeveloperForm(
+            request.POST or None, request.FILES or None)
+    else:
+        form = DigitalMarketingManagerForm(
+            request.POST or None, request.FILES or None)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            job_application = form.save(commit=False)
+            activation_key = get_random_string(length=32)
+
+            # Save the job application in the database
+            job_application.activation_key = activation_key
+            job_application.job_title = job_title
+            job_application.save()
+
+            logger.info('Job application submitted for %s', job_title)
+
+            # Send activation email to the user
+            subject = 'Activate your job application'
+            message = f"""
 <html>
 	<head>
 		<title>Job Application Submitted - DotPot IT</title>
@@ -84,42 +121,6 @@ message = f"""
 </html>
 """
 
-
-def job_list(request):
-    """
-    A view to display a list of all job openings.
-    """
-
-    # Render the template with the list of jobs and return the response to the user
-    return render(request, 'jobs/job_list.html')
-
-
-def success(request, activation_key):
-    return render(request, 'jobs/success.html', {'activation_key': activation_key})
-
-
-def apply_job(request, job_title):
-    if job_title == 'full_stack_developer':
-        form = FullStackDeveloperForm(
-            request.POST or None, request.FILES or None)
-    else:
-        form = DigitalMarketingManagerForm(
-            request.POST or None, request.FILES or None)
-
-    if request.method == 'POST':
-        if form.is_valid():
-            job_application = form.save(commit=False)
-            activation_key = get_random_string(length=32)
-
-            # Save the job application in the database
-            job_application.activation_key = activation_key
-            job_application.job_title = job_title
-            job_application.save()
-
-            logger.info('Job application submitted for %s', job_title)
-
-            # Send activation email to the user
-            subject = 'Activate your job application'
             send_mail(subject, message, 'career@dotpotit.com',
                       [job_application.email], fail_silently=False, html_message=message)
 
