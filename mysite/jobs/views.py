@@ -55,7 +55,7 @@ def apply_job(request, job_title):
             message = f'Hi {job_application.name},<br><br>Thank you for applying for the {job_title} position at DotPot IT.<br><br>Please click the button below to activate your job application:<br><br><a href="https://dotpotit.com/jobs/activate/{activation_key}" style="background-color: #eb5d1e; color: #fef8f5; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Activate</a><br><br>Best regards,<br>The DotPot IT Team'
 
             send_mail(subject, message, 'career@dotpotit.com',
-                      [job_application.email], fail_silently=False)
+                      [job_application.email], fail_silently=False, html_message=message)
 
             logger.info('Activation email sent to %s', job_application.email)
 
