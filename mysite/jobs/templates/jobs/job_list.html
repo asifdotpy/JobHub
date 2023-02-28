@@ -29,6 +29,57 @@
       margin: 0;
       max-height: 166px;
     }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal content box styles */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      /* Could be more or less, depending on screen size */
+    }
+
+    /* Close button styles */
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Header styles */
+    .modal-content h1 {
+      margin-top: 0;
+    }
   </style>
 
 </head>
@@ -236,8 +287,8 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#" class="terms-link">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#" class="privacy-link">Privacy policy</a></li>
             </ul>
           </div>
 
@@ -293,7 +344,150 @@
       </div>
     </div>
   </footer><!-- End Footer -->
+  <!-- Terms and privacy content starts-->
 
+  <div id="terms-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h1>Terms and Conditions</h1>
+      <p>These Terms and Conditions ("Agreement") govern the use of the services offered by Dotpot iT ("Company"),
+        including but not limited to Web Development, Software Development, AI Development, Mobile App Development, Call
+        Center Services, SEO/Digital Marketing, Networking, Cloud Services, Cyber Security, IT Support Office, Game
+        Development, Web3 Development & Blockchain Engineering. By using the Company's services, you agree to be bound
+        by this Agreement. If you do not agree to this Agreement, do not use the Company's services.</p>
+
+      <h2>Service Availability</h2>
+      <p>The Company's services are available to customers worldwide. The Company reserves the right to modify or
+        discontinue its services at any time without prior notice.</p>
+
+      <h2>Service Fees</h2>
+      <p>The fees for the Company's services will be specified in the relevant agreement between the Company and the
+        customer. The customer is responsible for paying all fees associated with the use of the Company's services.</p>
+
+      <h2>Intellectual Property</h2>
+      <p>All intellectual property rights, including but not limited to copyrights,
+        trademarks, and patents, in the Company's services and any materials provided by the Company, are the property
+        of the Company or its licensors. You agree not to copy, modify, or distribute any materials provided by the
+        Company without the Company's prior written consent.</p>
+
+      <h2>Limitation of Liability</h2>
+      <p>The Company shall not be liable for any damages arising from the use of its services, including but not limited
+        to direct, indirect, incidental, or consequential damages. The customer acknowledges that the Company's
+        liability is limited to the amount paid by the customer for the Company's services.</p>
+
+      <h2>Indemnification</h2>
+      <p>The customer agrees to indemnify and hold harmless the Company and its affiliates, officers, directors, agents,
+        and employees from any claims, damages, or expenses arising from the customer's use of the Company's services.
+      </p>
+
+      <h2>Confidentiality</h2>
+      <p>The customer agrees to maintain the confidentiality of all confidential information provided by the Company,
+        including but not limited to trade secrets, technical information, and business plans.</p>
+
+      <h2>Governing Law</h2>
+      <p>This Agreement shall be governed by and construed in accordance with the laws of Bangladesh without regard to
+        its conflict of law provisions.</p>
+
+      <h2>Termination</h2>
+      <p>Either party may terminate this Agreement at any time by providing written notice to the other party. Upon
+        termination of this Agreement, the customer shall immediately cease using the Company's services.</p>
+
+      <h2>Entire Agreement</h2>
+      <p>This Agreement constitutes the entire agreement between the customer and the Company and supersedes all prior
+        agreements and understandings, whether written or oral, relating to the subject matter of this Agreement.</p>
+
+      <h2>Modifications</h2>
+      <p>The Company reserves the right to modify this Agreement at any time by posting the revised Agreement on its
+        website. The customer's continued use of the Company's services after the posting of the revised Agreement
+        constitutes acceptance of the revised Agreement.</p>
+
+      <h3>Contact Information</h3>
+      <p>If you have any questions or concerns about this Agreement or the Company's services, please contact us at <a
+          href="mailto:help@dotpotit.com">help@dotpotit.com</a>.</p>
+
+      <p>By using the Company's services, you acknowledge that you have read this Agreement, understand it, and agree to
+        be bound by its terms and conditions.</p>
+    </div>
+  </div>
+  <!-- Terms and conditions ends here-->
+  <div id="privacy-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h1>Privacy Policy</h1>
+
+      <p>At Dotpot iT, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use,
+        and protect your personal information. By using our services or visiting our website, you accept the practices
+        outlined in this policy.</p>
+
+      <h2>Information we collect</h2>
+
+      <p>We collect personal information from you when you provide it to us directly or through our website. This
+        information may include your name, email address, phone number, and other information necessary to provide our
+        services.</p>
+
+      <p>We also collect information automatically through the use of cookies and other tracking technologies. This
+        information may include your IP address, browser type, operating system, and other usage information.</p>
+
+      <h2>How we use your information</h2>
+
+      <p>We use your personal information to provide our services to you, to communicate with you about our services,
+        and to improve our services. We may also use your information for marketing purposes, but we will always provide
+        you with an opportunity to opt-out of such communications.</p>
+
+      <p>We may share your personal information with third-party service providers who help us to provide our services,
+        but we will only do so if they agree to protect your information in accordance with this Privacy Policy.</p>
+
+      <h2>Services</h2>
+
+      <p>Dotpot iT provides a wide range of IT services, including:</p>
+
+      <ul>
+        <li>Web Development</li>
+        <li>Software Development</li>
+        <li>AI Development</li>
+        <li>Mobile App Development</li>
+        <li>Call Center Services</li>
+        <li>SEO/Digital Marketing</li>
+        <li>Networking</li>
+        <li>Cloud Services</li>
+        <li>Cyber Security</li>
+        <li>IT Support Office</li>
+        <li>Game Development</li>
+        <li>Web3 Development &amp; Blockchain Engineering</li>
+      </ul>
+
+      <p>For each service we provide, we may collect and use different types of personal information. We will always be
+        transparent about the information we collect and how we use it.</p>
+
+      <h2>How we protect your information</h2>
+
+      <p>We take reasonable measures to protect your personal information from unauthorized access, use, and disclosure.
+        We use industry-standard security technologies and procedures to help protect your information.</p>
+
+      <h2>Your rights</h2>
+
+      <p>You have the right to access, correct, or delete your personal information at any time. You may also request
+        that we restrict the processing of your personal information or object to the processing of your personal
+        information. To exercise any of these rights, please contact us at help@dotpotit.com.</p>
+
+      <h2>Changes to this Privacy Policy</h2>
+
+      <p>We reserve the right to modify this Privacy Policy at any time. If we make material changes to this policy, we
+        will notify you by email or by posting a notice on our website.</p>
+
+      <h2>Contact us</h2>
+
+      <p>If you have any questions or concerns about this Privacy Policy or our privacy practices, please contact us at
+        help@dotpotit.com.<a href="mailto:help@dotpotit.com">help@dotpotit.com</a>.</p>
+
+      <p>By using Dotpot iT's services, you acknowledge that you have read this Privacy Policy, understand it, and agree
+        to be bound by its terms and conditions.</p>
+
+    </div>
+  </div>
+
+
+  <!-- Terms and privacy content ends-->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
@@ -333,6 +527,44 @@
       // Display the file name during the upload process
       document.getElementById("resume").style.background = "lightgray";
       document.getElementById("resume").innerHTML = file.name;
+    });
+    // Get the modal elements
+    const termsModal = document.getElementById('terms-modal');
+    const privacyModal = document.getElementById('privacy-modal');
+
+    // Get the link elements
+    const termsLink = document.querySelector('.terms-link');
+    const privacyLink = document.querySelector('.privacy-link');
+
+    // Get the close elements
+    const closeButtons = document.querySelectorAll('.close');
+
+    // Add event listeners for links
+    termsLink.addEventListener('click', function (event) {
+      event.preventDefault();
+      termsModal.style.display = 'block';
+    });
+
+    privacyLink.addEventListener('click', function (event) {
+      event.preventDefault();
+      privacyModal.style.display = 'block';
+    });
+
+    // Add event listeners for close buttons
+    closeButtons.forEach(function (closeButton) {
+      closeButton.addEventListener('click', function () {
+        termsModal.style.display = 'none';
+        privacyModal.style.display = 'none';
+      });
+    });
+
+    // Add event listener for outside clicks
+    window.addEventListener('click', function (event) {
+      if (event.target == termsModal) {
+        termsModal.style.display = 'none';
+      } else if (event.target == privacyModal) {
+        privacyModal.style.display = 'none';
+      }
     });
   </script>
 </body>
