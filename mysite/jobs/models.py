@@ -53,11 +53,15 @@ class JobApplication(models.Model):
     def __str__(self) -> str:
         return self.name
 
-
 class FullStackDeveloper(models.Model):
     """
     Model for Full Stack Developer
     """
+    WORK_TYPES = (
+        ('on-site', 'On-Site'),
+        ('remote', 'Remote'),
+    )
+
     name = models.CharField(max_length=100, blank=False, null=False)
     email = models.EmailField(max_length=254, blank=False, null=False)
     address = models.CharField(max_length=100, blank=False, null=False)
@@ -65,6 +69,7 @@ class FullStackDeveloper(models.Model):
     resume = models.FileField(upload_to='resumes/full_stack_developers/')
     phone_number = models.CharField(max_length=20, blank=False, null=False)
     cover_letter = models.TextField(blank=False, null=False)
+    work_type = models.CharField(max_length=20, choices=WORK_TYPES, default='On-Site')
 
     def __str__(self):
         return self.name
@@ -74,6 +79,11 @@ class DigitalMarketingManager(models.Model):
     """
     Model for Digital Marketing Manager
     """
+    WORK_TYPES = (
+        ('on-site', 'On-Site'),
+        ('remote', 'Remote'),
+    )
+
     name = models.CharField(max_length=100, blank=False, null=False)
     email = models.EmailField(max_length=254, blank=False, null=False)
     address = models.CharField(max_length=100, blank=False, null=False)
@@ -81,6 +91,7 @@ class DigitalMarketingManager(models.Model):
     resume = models.FileField(upload_to='resumes/digital_marketing_managers/')
     phone_number = models.CharField(max_length=20, blank=False, null=False)
     cover_letter = models.TextField(blank=False, null=False)
+    work_type = models.CharField(max_length=20, choices=WORK_TYPES, default='On-Site')
 
     def __str__(self):
         return self.name

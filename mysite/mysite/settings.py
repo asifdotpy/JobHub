@@ -45,8 +45,11 @@ CSRF_TRUSTED_ORIGINS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
+    'debug_toolbar',
     'landing.apps.LandingConfig',
     'jobs',
+    'api',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,7 +58,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+# Added internal ips
+INTERNAL_IPS = [
+    "127.0.0.1",
+        ]
+
+
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -142,7 +152,10 @@ STATICFILES_DIRS = [
     BASE_DIR / "jobs/templates/jobs",
 ]
 
-# Add Logging
+# Add Logging 
+# Logging disabled because it logs too much which isn't necessery.
+
+"""
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -162,7 +175,7 @@ LOGGING = {
         },
     },
 }
-
+"""
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

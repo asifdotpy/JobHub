@@ -1,5 +1,5 @@
 from django import forms
-
+from .models import FullStackDeveloper, DigitalMarketingManager
 
 # Below Class can also be used.
 """
@@ -16,9 +16,8 @@ class DigitalMarketingManagerForm(forms.Form):
     area = forms.ChoiceField(label='Area', choices=[('Mirpur', 'Mirpur'), ('Mohammadpur', 'Mohammadpur')], widget=forms.Select(attrs={'style': 'padding: 10px; border-radius: 5px; border: 1px solid #ccc;'}))
 """
 
-from django import forms
-from .models import FullStackDeveloper, DigitalMarketingManager
-
+# Added work_types
+WORK_TYPES = [    ('on-site', 'On-Site'),    ('remote', 'Remote'),]
 
 class FullStackDeveloperForm(forms.ModelForm):
     """
@@ -28,11 +27,12 @@ class FullStackDeveloperForm(forms.ModelForm):
     email = forms.CharField(widget=forms.EmailInput)
     phone_number = forms.CharField(max_length=20)
     cover_letter = forms.CharField(widget=forms.Textarea)
+    work_type = forms.ChoiceField(choices=WORK_TYPES, widget=forms.Select(attrs={'class': 'form-control'}))
 
     class Meta:
         model = FullStackDeveloper
         fields = ['name', 'email', 'address',
-                  'resume', 'phone_number', 'cover_letter']
+                  'resume', 'phone_number', 'cover_letter', 'work_type']
 
 
 class DigitalMarketingManagerForm(forms.ModelForm):
@@ -43,8 +43,9 @@ class DigitalMarketingManagerForm(forms.ModelForm):
     email = forms.CharField(widget=forms.EmailInput)
     phone_number = forms.CharField(max_length=20)
     cover_letter = forms.CharField(widget=forms.Textarea)
+    work_type = forms.ChoiceField(choices=WORK_TYPES, widget=forms.Select(attrs={'class': 'form-control'}))
 
     class Meta:
         model = DigitalMarketingManager
         fields = ['name', 'email', 'address',
-                  'resume', 'phone_number', 'cover_letter']
+                  'resume', 'phone_number', 'cover_letter', 'work_type']
