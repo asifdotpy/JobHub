@@ -19,7 +19,7 @@ from jobs.views import activate_job_application
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
-
+from django.views.generic import TemplateView
 
 
 urlpatterns = [
@@ -28,6 +28,8 @@ urlpatterns = [
     path('', include('landing.urls')),
     path('jobs/', include('jobs.urls', namespace='jobs')),
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
+    path('terms/', TemplateView.as_view(template_name='terms.html'), name='terms'),
+    path('privacy/', TemplateView.as_view(template_name='privacy.html'), name='privacy'),
 ]
 
 if settings.DEBUG:
