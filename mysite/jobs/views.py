@@ -7,7 +7,7 @@ from django.utils.crypto import get_random_string
 from django.core.files.storage import FileSystemStorage
 from .models import FullStackDeveloper, DigitalMarketingManager, JobApplication
 from django.shortcuts import render, redirect
-from .forms import FullStackDeveloperForm, DigitalMarketingManagerForm
+from .forms import FullStackDeveloperForm, DigitalMarketingManagerForm, SeniorBackendEngineerForm, AIMLEngineerForm, GameDeveloperForm, MobileAppDeveloperForm
 from django.shortcuts import render, get_object_or_404
 from .models import JobOpening
 from django.contrib import messages
@@ -31,7 +31,7 @@ def job_list(request):
 def success(request, activation_key):
     return render(request, 'jobs/success.html', {'activation_key': activation_key})
 
-
+'''
 def apply_job(request, job_title):
     if job_title == 'full_stack_developer':
         form = FullStackDeveloperForm(
@@ -135,6 +135,7 @@ def apply_job(request, job_title):
 
 # Activate job application function will save the data after the apply_job
 # function triggered.
+'''
 def activate_job_application(request, activation_key):
     """
     Activates a job application for the given activation key.
@@ -205,3 +206,52 @@ def activate_job_application(request, activation_key):
         job_title = None
 
     return redirect('jobs:success', job_title=job_title)
+
+def apply_job(request, job_title):
+    if job_title == 'full_stack_developer':
+        form = FullStackDeveloperForm(
+            request.POST or None, request.FILES or None)
+    elif job_title == 'digital_marketing_manager':
+        form = DigitalMarketingManagerForm(
+            request.POST or None, request.FILES or None)
+    elif job_title == 'senior_backend_engineer':
+        form = SeniorBackendEngineerForm(
+            request.POST or None, request.FILES or None)
+    elif job_title == 'aiml_engineer':
+        form = AIMLEngineerForm(
+            request.POST or None, request.FILES or None)
+    elif job_title == 'game_developer':
+        form = GameDeveloperForm(
+            request.POST or None, request.FILES or None)
+    elif job_title == 'mobile_app_developer':
+        form = MobileAppDeveloperForm(
+            request.POST or None, request.FILES or None)
+    else:
+        raise Http404
+
+    if request.method == 'POST':
+        print('form application called')
+        if form.is_valid():
+            job_application = form.save(commit=False)
+            activation_key = get_random_string(length=32)
+
+            # Save the job application in the database
+            job_application.activation_key = activation_key
+            job_application.job_title = job_title
+            job_application.save()
+
+            logger.info('Job application submitted for %s', job_title)
+
+            # Send activation email to the user
+            subject = 'Activate your job application'
+            message = 'hello'
+            send_mail(subject, message, 'career@dotpotit.com',
+                      [job_application.email], fail_silently=False, html_message=message)
+
+            logger.info('Activation email sent to %s', job_application.email)
+
+            messages.success(
+                request, 'Your job application has been submitted!')
+            return redirect('jobs:apply_job', job_title=job_title)
+
+    return render(request, 'jobs/apply_job.html', {'job_title': job_title, 'form': form})
