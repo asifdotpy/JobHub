@@ -95,3 +95,87 @@ class DigitalMarketingManager(models.Model):
 
     def __str__(self):
         return self.name
+class SeniorBackendEngineer(models.Model):
+    """
+    Model for Senior Backend Engineer
+    """
+    WORK_TYPES = (
+        ('on-site', 'On-Site'),
+        ('remote', 'Remote'),
+    )
+
+    name = models.CharField(max_length=100, blank=False, null=False)
+    email = models.EmailField(max_length=254, blank=False, null=False)
+    address = models.CharField(max_length=100, blank=False, null=False)
+    # resume folders will be senior_backend_engineer instead of senior_backend_engineers
+    resume = models.FileField(upload_to='resumes/senior_backend_engineers/')
+    phone_number = models.CharField(max_length=20, blank=False, null=False)
+    cover_letter = models.TextField(blank=False, null=False)
+    work_type = models.CharField(max_length=20, choices=WORK_TYPES, default='On-Site')
+
+    def __str__(self):
+        return self.name
+
+
+class AIMLEngineer(models.Model):
+    """
+    Model for AI/ML Engineer
+    """
+    WORK_TYPES = (
+        ('on-site', 'On-Site'),
+        ('remote', 'Remote'),
+    )
+
+    name = models.CharField(max_length=100, blank=False, null=False)
+    email = models.EmailField(max_length=254, blank=False, null=False)
+    address = models.CharField(max_length=100, blank=False, null=False)
+    # resume folders will be ai_ml_engineer instead of ai_ml_engineers
+    resume = models.FileField(upload_to='resumes/ai_ml_engineers/')
+    phone_number = models.CharField(max_length=20, blank=False, null=False)
+    cover_letter = models.TextField(blank=False, null=False)
+    work_type = models.CharField(max_length=20, choices=WORK_TYPES, default='On-Site')
+
+    def __str__(self):
+        return self.name
+
+
+class GameDeveloper(models.Model):
+    """
+    Model for Game Developer
+    """
+    WORK_TYPES = (
+        ('on-site', 'On-Site'),
+        ('remote', 'Remote'),
+    )
+
+    name = models.CharField(max_length=100, blank=False, null=False)
+    email = models.EmailField(max_length=254, blank=False, null=False)
+    address = models.CharField(max_length=100, blank=False, null=False)
+    # resume folders will be game_developer instead of game_developers
+    resume = models.FileField(upload_to='resumes/game_developers/')
+    phone_number = models.CharField(max_length=20, blank=False, null=False)
+    cover_letter = models.TextField(blank=False, null=False)
+    work_type = models.CharField(max_length=20, choices=WORK_TYPES, default='On-Site')
+
+    def __str__(self):
+        return self.name
+class MobileAppDeveloper(models.Model):
+    """
+    Model for Mobile App Developer
+    """
+    WORK_TYPES = (
+        ('on-site', 'On-Site'),
+        ('remote', 'Remote'),
+    )
+
+    name = models.CharField(max_length=100, blank=False, null=False)
+    email = models.EmailField(max_length=254, blank=False, null=False)
+    address = models.CharField(max_length=100, blank=False, null=False)
+    # resume folders will be mobile_app_developer instead of mobile_app_developers
+    resume = models.FileField(upload_to='resumes/mobile_app_developers/')
+    phone_number = models.CharField(max_length=20, blank=False, null=False)
+    cover_letter = models.TextField(blank=False, null=False)
+    work_type = models.CharField(max_length=20, choices=WORK_TYPES, default='On-Site')
+
+    def __str__(self):
+        return self.name
