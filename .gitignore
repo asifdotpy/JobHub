@@ -130,3 +130,7 @@ dmypy.json
 
 # Resumes directory removed from the git repository
 resumes/
+
+# Migrations directory from jobs removed from git repo
+/jobs/migrations/
+

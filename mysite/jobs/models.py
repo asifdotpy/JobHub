@@ -4,6 +4,12 @@ from __future__ import annotations
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+# Added work_types which is basically on-site or remote
+WORK_TYPES = (
+    ('on-site', 'On-Site'),
+    ('remote', 'Remote'),
+)
+
 
 class JobOpening(models.Model):
     """
@@ -30,7 +36,6 @@ class JobOpening(models.Model):
 
 # The `JobApplication` model represents a job application submitted by a user. It stores information about the user, their resume, the job title, activation key, and whether the application has been activated.
 # It also includes timestamps for when the application was created and last updated.
-
 class JobApplication(models.Model):
     name: str = models.CharField(_("Name"), max_length=255)
     address: str = models.CharField(_("Address"), max_length=255)
@@ -39,6 +44,8 @@ class JobApplication(models.Model):
     cover_letter: str = models.TextField(_("Cover Letter"))
     resume: str = models.FileField(_("Resume"), upload_to='resumes/')
     job_title: str = models.CharField(_("Job Title"), max_length=255)
+    work_type: str = models.CharField(
+        _("Work Type"), max_length=20, choices=WORK_TYPES, default="on-site")
     activation_key: str = models.CharField(
         _("Activation Key"), max_length=32, unique=True)
     is_active: bool = models.BooleanField(_("Is Active"), default=False)
@@ -52,6 +59,7 @@ class JobApplication(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
 
 class FullStackDeveloper(models.Model):
     """
@@ -69,7 +77,8 @@ class FullStackDeveloper(models.Model):
     resume = models.FileField(upload_to='resumes/full_stack_developers/')
     phone_number = models.CharField(max_length=20, blank=False, null=False)
     cover_letter = models.TextField(blank=False, null=False)
-    work_type = models.CharField(max_length=20, choices=WORK_TYPES, default='On-Site')
+    work_type = models.CharField(
+        max_length=20, choices=WORK_TYPES, default='On-Site')
 
     def __str__(self):
         return self.name
@@ -91,10 +100,13 @@ class DigitalMarketingManager(models.Model):
     resume = models.FileField(upload_to='resumes/digital_marketing_managers/')
     phone_number = models.CharField(max_length=20, blank=False, null=False)
     cover_letter = models.TextField(blank=False, null=False)
-    work_type = models.CharField(max_length=20, choices=WORK_TYPES, default='On-Site')
+    work_type = models.CharField(
+        max_length=20, choices=WORK_TYPES, default='On-Site')
 
     def __str__(self):
         return self.name
+
+
 class SeniorBackendEngineer(models.Model):
     """
     Model for Senior Backend Engineer
@@ -111,7 +123,8 @@ class SeniorBackendEngineer(models.Model):
     resume = models.FileField(upload_to='resumes/senior_backend_engineers/')
     phone_number = models.CharField(max_length=20, blank=False, null=False)
     cover_letter = models.TextField(blank=False, null=False)
-    work_type = models.CharField(max_length=20, choices=WORK_TYPES, default='On-Site')
+    work_type = models.CharField(
+        max_length=20, choices=WORK_TYPES, default='On-Site')
 
     def __str__(self):
         return self.name
@@ -133,7 +146,8 @@ class AIMLEngineer(models.Model):
     resume = models.FileField(upload_to='resumes/ai_ml_engineers/')
     phone_number = models.CharField(max_length=20, blank=False, null=False)
     cover_letter = models.TextField(blank=False, null=False)
-    work_type = models.CharField(max_length=20, choices=WORK_TYPES, default='On-Site')
+    work_type = models.CharField(
+        max_length=20, choices=WORK_TYPES, default='On-Site')
 
     def __str__(self):
         return self.name
@@ -155,10 +169,13 @@ class GameDeveloper(models.Model):
     resume = models.FileField(upload_to='resumes/game_developers/')
     phone_number = models.CharField(max_length=20, blank=False, null=False)
     cover_letter = models.TextField(blank=False, null=False)
-    work_type = models.CharField(max_length=20, choices=WORK_TYPES, default='On-Site')
+    work_type = models.CharField(
+        max_length=20, choices=WORK_TYPES, default='On-Site')
 
     def __str__(self):
         return self.name
+
+
 class MobileAppDeveloper(models.Model):
     """
     Model for Mobile App Developer
@@ -175,7 +192,8 @@ class MobileAppDeveloper(models.Model):
     resume = models.FileField(upload_to='resumes/mobile_app_developers/')
     phone_number = models.CharField(max_length=20, blank=False, null=False)
     cover_letter = models.TextField(blank=False, null=False)
-    work_type = models.CharField(max_length=20, choices=WORK_TYPES, default='On-Site')
+    work_type = models.CharField(
+        max_length=20, choices=WORK_TYPES, default='On-Site')
 
     def __str__(self):
         return self.name
