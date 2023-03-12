@@ -111,6 +111,8 @@ DATABASES = {
 # Added CORS origin rule to True for CSRF Token.
 CORS_ORIGIN_ALLOW_ALL = True
 
+# Added CORS credentials to true for all
+CORS_ALLOW_CREDENTIALS = True
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -157,7 +159,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "jobs/templates/jobs",
 ]
 
-# Add Logging 
+# Add Logging
 # Logging disabled because it logs too much which isn't necessery.
 
 """
