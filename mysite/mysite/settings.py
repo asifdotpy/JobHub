@@ -45,6 +45,7 @@ CSRF_TRUSTED_ORIGINS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'rest_framework',
     #'debug_toolbar',
     'landing.apps.LandingConfig',
@@ -73,7 +74,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+    'corsheaders.middleware.CorsMiddleware',
+    ]
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -105,6 +107,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Added CORS origin rule to True for CSRF Token.
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Password validation
