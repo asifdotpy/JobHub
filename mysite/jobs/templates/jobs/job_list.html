@@ -23,6 +23,36 @@
   <!-- Template Main CSS File -->
   <link href=" {% static 'assets/css/style.css' %} " rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // handle form submission for all form containers with class "form-container"
+    $('.form-container form').submit(function (e) {
+      e.preventDefault(); // prevent default form submission behavior
+      var form = $(this); // get the current form element
+      var url = form.attr('action'); // get the form action URL
+      var method = form.attr('method'); // get the form method
+      var formData = new FormData(this); // create FormData object from the form data
+      $.ajax({
+        url: url,
+        type: method,
+        data: formData,
+        contentType: false,
+        processData: false,
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function (response) {
+          console.log(response);
+          form.trigger('reset'); // reset the form on successful submission
+          // show success message or redirect to another page
+        },
+        error: function (xhr, status, error) {
+          console.log(error);
+          // show error message
+        }
+      });
+    });
+  </script>
+
   <style>
     #header .logo img {
       padding: 0;
@@ -94,7 +124,7 @@
             <button id="apply-btn1"
               style="margin-bottom: 20px; background-color: #eb5d1e; border-radius: 10px; padding: 10px 20px;">Apply</button>
             <!--responsive box-->
-            <div id="responsive-box-dev"
+            <div class="form-container" id="responsive-box-dev"
               style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
               <form action="{% url 'jobs:apply_job' job_title='full_stack_developer' %}" method="post"
                 enctype="multipart/form-data">
@@ -167,7 +197,7 @@
             <!-- pop up created to open the job description and form-->
 
             <!--responsive box for marketing-->
-            <div id="responsive-box-mar"
+            <div class="form-container" id="responsive-box-mar"
               style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
               <form action="{% url 'jobs:apply_job' job_title='digital_marketing_manager' %}" method="post"
                 enctype="multipart/form-data">
@@ -238,8 +268,8 @@
               style="background-color: #eb5d1e; border-radius: 10px; padding: 10px 20px;">Apply</button>
             <!-- pop up created to open the job description and form-->
 
-            <!--responsive box for marketing-->
-            <div id="responsive-box-backend"
+            <!--responsive box for backend engineer-->
+            <div class="form-container" id="responsive-box-backend"
               style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
               <form action="{% url 'jobs:apply_job' job_title='senior_backend_engineer' %}" method="post"
                 enctype="multipart/form-data">
@@ -312,7 +342,7 @@
             <!-- pop up created to open the job description and form-->
 
             <!--responsive box for marketing-->
-            <div id="responsive-box-ai"
+            <div class="form-container" id="responsive-box-ai"
               style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
               <form action="{% url 'jobs:apply_job' job_title='aiml_engineer' %}" method="post"
                 enctype="multipart/form-data">
@@ -384,7 +414,7 @@
             <!-- pop up created to open the job description and form-->
 
             <!--responsive box for game developer-->
-            <div id="responsive-box-game"
+            <div class="form-container" id="responsive-box-game"
               style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
               <form action="{% url 'jobs:apply_job' job_title='game_developer' %}" method="post"
                 enctype="multipart/form-data">
@@ -456,7 +486,7 @@
             <!-- pop up created to open the job description and form-->
 
             <!--responsive box for marketing-->
-            <div id="responsive-box-mobile"
+            <div class="form-container" id="responsive-box-mobile"
               style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
               <form action="{% url 'jobs:apply_job' job_title='mobile_app_developer' %}" method="post"
                 enctype="multipart/form-data">
