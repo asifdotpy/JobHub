@@ -109,7 +109,14 @@ DATABASES = {
 }
 
 # Added CORS origin rule to True for CSRF Token.
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://www.dotpotit.com",
+    "http://dotpotit.com",
+    "https://www.dotpotit.com",
+    "https://dotpotit.com",
+    ]
 
 # Added CORS credentials to true for all
 CORS_ALLOW_CREDENTIALS = True
