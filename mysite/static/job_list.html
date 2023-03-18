@@ -23,6 +23,42 @@
   <!-- Template Main CSS File -->
   <link href=" {% static 'assets/css/style.css' %} " rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // handle form submission for all form containers with class "form-container"
+    $('.form-container form').submit(function (e) {
+      e.preventDefault(); // prevent default form submission behavior
+      var form = $(this); // get the current form element
+      var url = form.attr('action'); // get the form action URL
+      var method = form.attr('method'); // get the form method
+      var formData = new FormData(this); // create FormData object from the form data
+
+      // Add CSRF token to form data
+      var csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+      formData.append('csrfmiddlewaretoken', csrf_token);
+
+      $.ajax({
+        url: url,
+        type: method,
+        data: formData,
+        contentType: false,
+        processData: false,
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function (response) {
+          console.log(response);
+          form.trigger('reset'); // reset the form on successful submission
+          // show success message or redirect to another page
+        },
+        error: function (xhr, status, error) {
+          console.log(error);
+          // show error message
+        }
+      });
+    });
+
+  </script>
+
   <style>
     #header .logo img {
       padding: 0;
@@ -79,6 +115,7 @@
       </div>
 
       <div class="column d-flex flex-column justify-content-center" style="align-items: center;">
+        <!--Full Stack Developer job post-->
         <div class="col-md-12 col-lg-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
           <div class="icon-box" id="specific-icon-box"
             style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: solid 5px #eb5d1e; border-radius: 10px;">
@@ -93,7 +130,7 @@
             <button id="apply-btn1"
               style="margin-bottom: 20px; background-color: #eb5d1e; border-radius: 10px; padding: 10px 20px;">Apply</button>
             <!--responsive box-->
-            <div id="responsive-box-dev"
+            <div class="form-container" id="responsive-box-dev"
               style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
               <form action="{% url 'jobs:apply_job' job_title='full_stack_developer' %}" method="post"
                 enctype="multipart/form-data">
@@ -119,10 +156,17 @@
                     oninput="this.value=this.value.replace(/[^0-9]/g,'');"
                     style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
                 </div>
-
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="work-type" style="font-weight: bold;">Work Type:</label>
+                  <select id="work-type" name="work_type"
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="on-site">On-Site</option>
+                    <option value="remote">Remote</option>
+                  </select>
+                </div>
                 <div class="form-group" style="margin-bottom: 20px;">
                   <label for="resume" style="font-weight: bold;">Resume:</label>
-                  <input type="file" name="resume" id="resume" accept="application/pdf" required
+                  <input type="file" name="resume" id="resume" required
                     style="padding: 10px; border-radius: 10px; border: 1px solid;">
                 </div>
                 <div class="form-group" style="margin-bottom: 20px;">
@@ -140,6 +184,9 @@
 
           </div>
         </div>
+        <!--Fulll Stack Developer job post ended-->
+
+        <!--Digital Marketing Manager job post started-->
         <div class="col-md-12 col-lg-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
           <div class="icon-box" id="specific-icon-box"
             style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: solid 5px #eb5d1e; border-radius: 10px;">
@@ -156,7 +203,7 @@
             <!-- pop up created to open the job description and form-->
 
             <!--responsive box for marketing-->
-            <div id="responsive-box-mar"
+            <div class="form-container" id="responsive-box-mar"
               style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
               <form action="{% url 'jobs:apply_job' job_title='digital_marketing_manager' %}" method="post"
                 enctype="multipart/form-data">
@@ -182,10 +229,17 @@
                     oninput="this.value=this.value.replace(/[^0-9]/g,'');"
                     style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
                 </div>
-
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="work-type" style="font-weight: bold;">Work Type:</label>
+                  <select id="work-type" name="work_type"
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="on-site">On-Site</option>
+                    <option value="remote">Remote</option>
+                  </select>
+                </div>
                 <div class="form-group" style="margin-bottom: 20px;">
                   <label for="resume" style="font-weight: bold;">Resume:</label>
-                  <input type="file" name="resume" id="resume" accept="application/pdf" required
+                  <input type="file" name="resume" id="resume" required
                     style="padding: 10px; border-radius: 10px; border: 1px solid;">
                 </div>
                 <div class="form-group" style="margin-bottom: 20px;">
@@ -202,6 +256,296 @@
             <!-- Add your responsive box content here -->
           </div>
         </div>
+        <!-- Digital Marketing Manager job post ended-->
+        <!-- Senior Backend Developer Job post started-->
+        <div class="col-md-12 col-lg-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+          <div class="icon-box" id="specific-icon-box"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: solid 5px #eb5d1e; border-radius: 10px;">
+            <div class="icon" style="margin-bottom: 10px;"><i class="bx bxl-dribbble"></i></div>
+            <h4 class="title" style="margin-bottom: 10px;">Senior Backend Engineer(Python)</a>
+            </h4>
+            <p style="margin-bottom: 10px;">We are currently seeking a talented Senior Backend Engineer Python to join
+              our team. The ideal candidate should have a strong understanding of Python, web development technologies
+              and experience building complex, scalable, and high-performance applications. You will be responsible for
+              designing, developing, and maintaining our backend solutions, working closely with the rest of the team to
+              ensure that our solutions meet the needs of our customers. If you have a passion for backend development
+              and are excited about working on cutting-edge projects, we would love to hear from you!</p>
+            <button id="apply-btn3"
+              style="background-color: #eb5d1e; border-radius: 10px; padding: 10px 20px;">Apply</button>
+            <!-- pop up created to open the job description and form-->
+
+            <!--responsive box for backend engineer-->
+            <div class="form-container" id="responsive-box-backend"
+              style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
+              <form action="{% url 'jobs:apply_job' job_title='senior_backend_engineer' %}" method="post"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="name" style="font-weight: bold;">Name:</label>
+                  <input type="text" id="name" name="name" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="email" style="font-weight: bold;">Email:</label>
+                  <input type="email" id="email" name="email" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="address" style="font-weight: bold;">Address:</label>
+                  <input type="text" id="address" name="address" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="phone" style="font-weight: bold;">Phone Number:</label>
+                  <input type="text" id="phone" name="phone_number" required
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="work-type" style="font-weight: bold;">Work Type:</label>
+                  <select id="work-type" name="work_type"
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="on-site">On-Site</option>
+                    <option value="remote">Remote</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="resume" style="font-weight: bold;">Resume:</label>
+                  <input type="file" name="resume" id="resume" required
+                    style="padding: 10px; border-radius: 10px; border: 1px solid;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="cover-letter" style="font-weight: bold;">Cover Letter:</label>
+                  <textarea id="cover-letter" name="cover_letter" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+                </div>
+                <input type="submit" value="Submit"
+                  style="padding: 10px; background-color: #eb5d1e; color: #fff; border-radius: 5px;">
+              </form>
+            </div>
+
+
+            <!-- Add your responsive box content here -->
+          </div>
+        </div>
+        <!-- Senior Backend Developer Job post ended-->
+        <!-- AI/ML engineer Job post started-->
+        <div class="col-md-12 col-lg-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+          <div class="icon-box" id="specific-icon-box"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: solid 5px #eb5d1e; border-radius: 10px;">
+            <div class="icon" style="margin-bottom: 10px;"><i class="bx bxl-dribbble"></i></div>
+            <h4 class="title" style="margin-bottom: 10px;">AI/ML Engineer</a>
+            </h4>
+            <p style="margin-bottom: 10px;">We are currently seeking a talented AI/ML Engineer to join our team. The
+              ideal candidate should have a strong understanding of machine learning algorithms, natural language
+              processing and computer vision, and experience building innovative solutions. You will be responsible for
+              designing, developing, and implementing machine learning models and algorithms, working closely with the
+              rest of the team to ensure that our solutions meet the needs of our customers. If you have a passion for
+              AI/ML development and are excited about working on cutting-edge projects, we would love to hear from you!
+            </p>
+            <button id="apply-btn4"
+              style="background-color: #eb5d1e; border-radius: 10px; padding: 10px 20px;">Apply</button>
+            <!-- pop up created to open the job description and form-->
+
+            <!--responsive box for marketing-->
+            <div class="form-container" id="responsive-box-ai"
+              style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
+              <form action="{% url 'jobs:apply_job' job_title='aiml_engineer' %}" method="post"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="name" style="font-weight: bold;">Name:</label>
+                  <input type="text" id="name" name="name" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="email" style="font-weight: bold;">Email:</label>
+                  <input type="email" id="email" name="email" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="address" style="font-weight: bold;">Address:</label>
+                  <input type="text" id="address" name="address" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="phone" style="font-weight: bold;">Phone Number:</label>
+                  <input type="text" id="phone" name="phone_number" required
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="work-type" style="font-weight: bold;">Work Type:</label>
+                  <select id="work-type" name="work_type"
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="on-site">On-Site</option>
+                    <option value="remote">Remote</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="resume" style="font-weight: bold;">Resume:</label>
+                  <input type="file" name="resume" id="resume" required
+                    style="padding: 10px; border-radius: 10px; border: 1px solid;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="cover-letter" style="font-weight: bold;">Cover Letter:</label>
+                  <textarea id="cover-letter" name="cover_letter" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+                </div>
+                <input type="submit" value="Submit"
+                  style="padding: 10px; background-color: #eb5d1e; color: #fff; border-radius: 5px;">
+              </form>
+            </div>
+
+
+            <!-- Add your responsive box content here -->
+          </div>
+        </div>
+        <!--AI/ML engineer Job post ended-->
+        <!-- Game Developer job post started-->
+        <div class="col-md-12 col-lg-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+          <div class="icon-box" id="specific-icon-box"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: solid 5px #eb5d1e; border-radius: 10px;">
+            <div class="icon" style="margin-bottom: 10px;"><i class="bx bxl-dribbble"></i></div>
+            <h4 class="title" style="margin-bottom: 10px;">Game Developer</a>
+            </h4>
+            <p style="margin-bottom: 10px;">We are currently seeking a skilled Game Developer to join our team. The
+              ideal candidate should have a strong understanding of game development technologies, and experience
+              building engaging and interactive games. You will be responsible for designing, developing, and
+              maintaining our game applications, working closely with the rest of the team to ensure that our solutions
+              meet the needs of our customers. If you have a passion for game development and are excited about working
+              on cutting-edge projects, we would love to hear from you!</p>
+            <button id="apply-btn5"
+              style="background-color: #eb5d1e; border-radius: 10px; padding: 10px 20px;">Apply</button>
+            <!-- pop up created to open the job description and form-->
+
+            <!--responsive box for game developer-->
+            <div class="form-container" id="responsive-box-game"
+              style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
+              <form action="{% url 'jobs:apply_job' job_title='game_developer' %}" method="post"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="name" style="font-weight: bold;">Name:</label>
+                  <input type="text" id="name" name="name" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="email" style="font-weight: bold;">Email:</label>
+                  <input type="email" id="email" name="email" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="address" style="font-weight: bold;">Address:</label>
+                  <input type="text" id="address" name="address" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="phone" style="font-weight: bold;">Phone Number:</label>
+                  <input type="text" id="phone" name="phone_number" required
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="work-type" style="font-weight: bold;">Work Type:</label>
+                  <select id="work-type" name="work_type"
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="on-site">On-Site</option>
+                    <option value="remote">Remote</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="resume" style="font-weight: bold;">Resume:</label>
+                  <input type="file" name="resume" id="resume" required
+                    style="padding: 10px; border-radius: 10px; border: 1px solid;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="cover-letter" style="font-weight: bold;">Cover Letter:</label>
+                  <textarea id="cover-letter" name="cover_letter" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+                </div>
+                <input type="submit" value="Submit"
+                  style="padding: 10px; background-color: #eb5d1e; color: #fff; border-radius: 5px;">
+              </form>
+            </div>
+
+
+            <!-- Add your responsive box content here -->
+          </div>
+        </div>
+        <!-- Game Developer job post ended-->
+        <!-- Mobile App developer job post started-->
+        <div class="col-md-12 col-lg-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+          <div class="icon-box" id="specific-icon-box"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: solid 5px #eb5d1e; border-radius: 10px;">
+            <div class="icon" style="margin-bottom: 10px;"><i class="bx bxl-dribbble"></i></div>
+            <h4 class="title" style="margin-bottom: 10px;">Mobile App Developer</a>
+            </h4>
+            <p style="margin-bottom: 10px;">We are currently seeking a talented Mobile App Developer to join our team.
+              The ideal candidate should have a strong understanding of mobile development technologies, and experience
+              building complex and dynamic mobile applications. You will be responsible for designing, developing, and
+              maintaining our mobile applications, working closely with the rest of the team to ensure that our
+              solutions meet the needs of our customers. If you have a passion for mobile app development and are
+              excited about working on cutting-edge projects, we would love to hear from you!</p>
+            <button id="apply-btn6"
+              style="background-color: #eb5d1e; border-radius: 10px; padding: 10px 20px;">Apply</button>
+            <!-- pop up created to open the job description and form-->
+
+            <!--responsive box for marketing-->
+            <div class="form-container" id="responsive-box-mobile"
+              style="display: none; padding: 20px; border-radius: 10px; background-color: #fdeee6;">
+              <form action="{% url 'jobs:apply_job' job_title='mobile_app_developer' %}" method="post"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="name" style="font-weight: bold;">Name:</label>
+                  <input type="text" id="name" name="name" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="email" style="font-weight: bold;">Email:</label>
+                  <input type="email" id="email" name="email" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="address" style="font-weight: bold;">Address:</label>
+                  <input type="text" id="address" name="address" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="phone" style="font-weight: bold;">Phone Number:</label>
+                  <input type="text" id="phone" name="phone_number" required
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="work-type" style="font-weight: bold;">Work Type:</label>
+                  <select id="work-type" name="work_type"
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="on-site">On-Site</option>
+                    <option value="remote">Remote</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="resume" style="font-weight: bold;">Resume:</label>
+                  <input type="file" name="resume" id="resume" required
+                    style="padding: 10px; border-radius: 10px; border: 1px solid;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                  <label for="cover-letter" style="font-weight: bold;">Cover Letter:</label>
+                  <textarea id="cover-letter" name="cover_letter" required
+                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+                </div>
+                <input type="submit" value="Submit"
+                  style="padding: 10px; background-color: #eb5d1e; color: #fff; border-radius: 5px;">
+              </form>
+            </div>
+
+
+            <!-- Add your responsive box content here -->
+          </div>
+        </div>
+        <!-- Mobile App developer job post ended-->
       </div>
     </div>
 
@@ -236,8 +580,8 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'terms' %}">Terms and Conditions</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'privacy' %}">Privacy Policy</a></li>
             </ul>
           </div>
 
@@ -320,6 +664,18 @@
       });
       $('#apply-btn2').click(function () {
         $('#responsive-box-mar').toggle();
+      });
+      $('#apply-btn3').click(function () {
+        $('#responsive-box-backend').toggle();
+      });
+      $('#apply-btn4').click(function () {
+        $('#responsive-box-ai').toggle();
+      });
+      $('#apply-btn5').click(function () {
+        $('#responsive-box-game').toggle();
+      });
+      $('#apply-btn6').click(function () {
+        $('#responsive-box-mobile').toggle();
       });
     });
     // Get reference to the file input element
