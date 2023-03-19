@@ -20,6 +20,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
 from django.views.generic import TemplateView
+from .views import PdfView
+
 
 
 urlpatterns = [
@@ -28,9 +30,8 @@ urlpatterns = [
     path('', include('landing.urls')),
     path('jobs/', include('jobs.urls', namespace='jobs')),
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
-    path('terms/', TemplateView.as_view(template_name='terms.html'), name='terms'),
-    path('privacy/', TemplateView.as_view(template_name='privacy.html'), name='privacy'),
-]
+    path('terms/<pdf_file>/', PdfView.as_view(), name='terms'),
+    path('privacy/<pdf_file>/', PdfView.as_view(), name='privacy'),]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -482,8 +482,11 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'terms' %}">Terms and Conditions</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'privacy' %}">Privacy Policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'terms' pdf_file='terms.pdf' %}">Terms and
+                  Conditions</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'privacy' pdf_file='privacy.pdf' %}">Privacy
+                  Policy</a></li>
+
             </ul>
           </div>
 
